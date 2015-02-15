@@ -16,8 +16,8 @@
 
 class Streaming {
   enum {
-    BUFFER_NUM  = 2,
-    BUFFER_SIZE = 1024 * 128
+    BUFFER_NUM    = 2,
+    SLEEP_TIME_MS = 250
   };
 
   // TIPS:再生スレッドよりStreamingのインスタンスが先に破棄されることがあるので
@@ -28,10 +28,10 @@ class Streaming {
   // 再生スレッドとの連絡用
   struct Param {
     std::mutex mutex;
-    bool stop;
+    bool stopped;
 
     Param() :
-      stop(false)
+      stopped(false)
     {}
   };
   std::shared_ptr<Param> param_;

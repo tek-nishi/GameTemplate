@@ -24,7 +24,10 @@ void Streaming::streamProc(const std::string path, const bool loop,
   stream.loop(loop);
     
   Buffer buffer[BUFFER_NUM];
-  std::vector<char> sound_buffer(BUFFER_SIZE);
+
+  // 読み込みバッファを1秒ぶんの長さにする
+  u_int buffer_size = stream.sampleRate() * (stream.isStereo() ? 2 : 1) * sizeof(uint16_t);
+  std::vector<char> sound_buffer(buffer_size);
 
   // すべてのストリームバッファを再生キューに積む
   for (u_int i = 0; i < BUFFER_NUM; ++i) {
@@ -36,8 +39,10 @@ void Streaming::streamProc(const std::string path, const bool loop,
 
   while (!stream.isEnd()) {
     param->mutex.lock();
-    if (param->stop) break;
+    bool stopped = param->stopped;
     param->mutex.unlock();
+
+    if (stopped) break;
       
     if (source->processed() > 0) {
       ALuint buffer_id = source->unqueueBuffer();
@@ -53,7 +58,7 @@ void Streaming::streamProc(const std::string path, const bool loop,
     }
 
     // Don't kill the CPU.
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
   }
     
   DOUT << "Finish streaming." << std::endl;
@@ -77,7 +82,11 @@ void Streaming::gain(const float gain) {
 }
 
 void Streaming::pause(const bool pause) {
-  if (param_->stop) return;
+  param_->mutex.lock();
+  bool stopped = param_->stopped;
+  param_->mutex.unlock();
+  
+  if (stopped) return;
     
   pause_ = pause;
   if (pause) {
@@ -93,11 +102,15 @@ void Streaming::stop() {
   gain(0.0);
 
   std::lock_guard<std::mutex>(param_->mutex);
-  param_->stop = true;
+  param_->stopped = true;
 }
 
 bool Streaming::isPlaying() {
-  if (param_->stop) return false;
+  param_->mutex.lock();
+  bool stopped = param_->stopped;
+  param_->mutex.unlock();
+  
+  if (stopped) return false;
     
   return source_->isPlaying();
 }
