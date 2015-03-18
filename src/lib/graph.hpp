@@ -233,6 +233,8 @@ void drawFillCircle(const float center_x, const float center_y,
 // center_x, center_y  円の中心位置
 // radius_x, radius_y  半径(横と縦)
 // start_rad, end_rad  開始・終了角度
+//                     角度が０で真上。プラスで時計回りの方向となる
+//                     (時計と同じ)
 // division            円の分割数(数値が大きいと滑らかな円になる)
 // line_width          線幅
 // color               色
@@ -247,6 +249,8 @@ void drawArc(const float center_x, const float center_y,
 // center_x, center_y  円の中心位置
 // radius_x, radius_y  半径(横と縦)
 // start_rad, end_rad  開始・終了角度
+//                     角度が０で真上。プラスで時計回りの方向となる
+//                     (時計と同じ)
 // division            円の分割数(数値が大きいと滑らかな円になる)
 // line_width          線幅
 // color               色
@@ -267,6 +271,8 @@ void drawArc(const float center_x, const float center_y,
 // center_x, center_y  円の中心位置
 // radius_x, radius_y  半径(横と縦)
 // start_rad, end_rad  開始・終了角度
+//                     角度が０で真上。プラスで時計回りの方向となる
+//                     (時計と同じ)
 // division            円の分割数(数値が大きいと滑らかな円になる)
 // color               色
 void drawFillArc(const float center_x, const float center_y,
@@ -279,6 +285,8 @@ void drawFillArc(const float center_x, const float center_y,
 // center_x, center_y  円の中心位置
 // radius_x, radius_y  半径(横と縦)
 // start_rad, end_rad  開始・終了角度
+//                     角度が０で真上。プラスで時計回りの方向となる
+//                     (時計と同じ)
 // division            円の分割数(数値が大きいと滑らかな円になる)
 // color               色
 // angle_rad           回転角度(ラジアン)
