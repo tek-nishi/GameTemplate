@@ -446,8 +446,8 @@ void drawCircle(const float center_x, const float center_y,
   // 描画
   drawCircle(-origin.x(), -origin.y(),
              radius_x, radius_y,
-             line_width,
              division,
+             line_width,
              color);
 
   // 行列を元に戻す
