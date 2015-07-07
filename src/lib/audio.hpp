@@ -58,6 +58,7 @@ public:
 // バッファの管理を代行
 class Buffer {
   ALuint id_;
+  float duration_sec_;
 
 
 public:
@@ -72,6 +73,9 @@ public:
   
   // バッファの識別子
   ALuint id() const;
+
+  // 再生時間(秒)
+  float duration() const;
 
   // 波形データを割り当て
   // TIPS:割り当て後、dataの内容は破棄できる
@@ -202,5 +206,8 @@ public:
 
   // 再生位置(秒)
   float currentTime() const;
+
+  // 再生時間(秒)
+  float duration() const;
 
 };

@@ -3,6 +3,7 @@
 //
 
 #include "random.hpp"
+#include <cassert>
 
 
 Random::Random() :
@@ -17,11 +18,13 @@ void Random::setSeed(const u_int new_seed) {
   
 // [0, last) を返す
 int Random::operator()(const int last) {
+  assert(last > 0);
   return engine_() % last;
 }
 
 // [first, last] を返す
 int Random::operator()(const int first, const int last) {
+  assert(first < last);
   return first + operator()(last - first + 1);
 }
 
@@ -33,5 +36,6 @@ float Random::operator()() {
 
 // [first, last] を返す
 float Random::operator()(const float first, const float last) {
+  assert(first < last);
   return first + (last - first) * operator()();
 }

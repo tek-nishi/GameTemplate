@@ -86,7 +86,8 @@ Buffer::Buffer(const std::string& path) {
 
   // WAVファイルの読み込み
   Wav wav_data(path);
-
+  duration_sec_ = wav_data.time();
+  
   // 波形データをバッファにコピー
   alBufferData(id_,
                wav_data.isStereo() ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16,
@@ -95,7 +96,9 @@ Buffer::Buffer(const std::string& path) {
                wav_data.sampleRate());
 }
 
-Buffer::Buffer() {
+Buffer::Buffer() :
+  duration_sec_(0.0f)
+{
   DOUT << "Buffer()" << std::endl;
 
   // バッファを１つ確保
@@ -112,6 +115,8 @@ Buffer::~Buffer() {
   
 // バッファの識別子
 ALuint Buffer::id() const { return id_; }
+// 再生時間
+float Buffer::duration() const { return duration_sec_; }
 
 void Buffer::bind(const bool stereo,
                   const void* data, const u_int size, const u_int rate) const {
@@ -319,3 +324,7 @@ float Media::currentTime() const {
   return source_->currentTime();
 }
 
+// 再生時間(秒)
+float Media::duration() const {
+  return buffer_->duration();
+}
