@@ -39,6 +39,13 @@ public:
   void b(const float value);
   void a(const float value);
 
+  // 参照でのアクセス
+  float& r();
+  float& g();
+  float& b();
+  float& a();
+
+  
   // OpenGLへ描画色を指定
   void setToGl() const;
 

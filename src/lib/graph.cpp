@@ -25,16 +25,22 @@ Color::Color(const float red, const float green, const float blue,
 {}
 
 // 色の取得
-float Color::r() const   { return red_; }
+float Color::r() const { return red_; }
 float Color::g() const { return green_; }
-float Color::b() const  { return blue_; }
+float Color::b() const { return blue_; }
 float Color::a() const { return alpha_; }
   
 // 色の変更
-void Color::r(const float value)   { red_ = value; }
+void Color::r(const float value) { red_ = value; }
 void Color::g(const float value) { green_ = value; }
-void Color::b(const float value)  { blue_ = value; }
+void Color::b(const float value) { blue_ = value; }
 void Color::a(const float value) { alpha_ = value; }
+
+// 参照でのアクセス
+float& Color::r() { return red_; }
+float& Color::g() { return green_; }
+float& Color::b() { return blue_; }
+float& Color::a() { return alpha_; }
 
 
 // OpenGLへ描画色を指定
