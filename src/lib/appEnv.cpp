@@ -114,6 +114,8 @@ void AppEnv::begin() {
 
   glMatrixMode(GL_MODELVIEW);
   glLoadMatrixf(matrix.second.data());
+
+  updateGamePad(gamepads_);
 }
 
 // アプリ更新処理終了
@@ -127,7 +129,6 @@ void AppEnv::end() {
   switchInputBuffer();
     
   glfwPollEvents();
-  updateGamePad(gamepads_);
 }
   
 // 入力(キー＆ボタン)の再初期化
@@ -135,8 +136,6 @@ void AppEnv::flushInput() {
   // TIPS:二回呼び出しているのは、入力バッファがダブルバッファなので
   switchInputBuffer();
   switchInputBuffer();
-
-  flushGamePad(gamepads_);
 }
   
 // ウィンドウサイズを返す

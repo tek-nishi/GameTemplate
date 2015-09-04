@@ -40,6 +40,7 @@ typedef unsigned long  u_long;
 
 // いくつかの余計な警告を表示しないようにする
 #pragma warning (disable:4244)
+#pragma warning (disable:4522)
 #pragma warning (disable:4800)
 #pragma warning (disable:4996)
 
