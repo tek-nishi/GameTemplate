@@ -139,7 +139,7 @@ void AppEnv::flushInput() {
 }
   
 // ウィンドウサイズを返す
-const Vec2f& AppEnv::viewSize() const { return window_size_; }
+const Vec2f& AppEnv::viewSize() const { return current_window_size_; }
 
 // ウインドウの位置を変更
 // pos 新しい位置

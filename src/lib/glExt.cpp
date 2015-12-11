@@ -5,11 +5,6 @@
 #include "glExt.hpp"
 #include <cstring>
 
-#if defined (_MSC_VER)
-#include <GL/glew.h>
-#endif
-#include <GLFW/glfw3.h>
-
 
 // リンクするライブラリの指示(Windows)
 #if defined (_MSC_VER)
