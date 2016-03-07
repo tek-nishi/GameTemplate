@@ -348,7 +348,6 @@
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = OSX/lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = GameTemplate;
 				WRAPPER_EXTENSION = app;
 			};
@@ -364,7 +363,6 @@
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = OSX/lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = GameTemplate;
 				WRAPPER_EXTENSION = app;
 			};
