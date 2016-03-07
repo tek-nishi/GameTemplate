@@ -1,6 +1,5 @@
 ﻿//
 // フォント
-// TIPS:Fontを生成した後は、必ずsizeを指定する事!!
 //
 
 #include "font.hpp"
@@ -23,19 +22,23 @@
 // コンストラクタ
 // font_path フォントファイル(ttf,otf)
 // mode      フォント生成方式
-Font::Font(const std::string& font_path, const int mode) {
+Font::Font(const std::string& font_path, const int font_size,
+           const int mode) {
   font_ = std::shared_ptr<FTFont>(setup(font_path, mode));
   font_->UseDisplayList(false);
-
+  size(font_size);
+  
   DOUT << "Font(" << font_path << ")" << std::endl;
 }
 
 // フォントを読み込み直す
 // font_path フォントファイル(ttf, otf)
 // mode      フォント生成方式(BUFFER, CACHE, POLYGON)
-void Font::read(const std::string& font_path, const int mode) {
+void Font::read(const std::string& font_path, const int font_size,
+                const int mode) {
   font_ = std::shared_ptr<FTFont>(setup(font_path, mode));
   font_->UseDisplayList(false);
+  size(font_size);
 
   DOUT << "Font::read(" << font_path << ")" << std::endl;
 }

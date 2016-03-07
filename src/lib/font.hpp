@@ -2,7 +2,6 @@
 
 //
 // 文字表示
-// TIPS:Fontを生成した後は、必ずsizeを指定する事!!
 //
 
 #include "defines.hpp"
@@ -30,17 +29,21 @@ public:
 
   // コンストラクタ
   // font_path フォントファイル(ttf,otf)
+  // font_size 文字の大きさ
   // mode      フォント生成方式(BUFFER, CACHE, POLYGON)
-  Font(const std::string& font_path, const int mode = BUFFER);
+  Font(const std::string& font_path, const int font_size,
+       const int mode = BUFFER);
 
   // フォントを読み込み直す
   // font_path フォントファイル(ttf, otf)
+  // font_size 文字の大きさ
   // mode      フォント生成方式(BUFFER, CACHE, POLYGON)
-  void read(const std::string& font_path, const int mode = BUFFER);
+  void read(const std::string& font_path, const int font_size,
+            const int mode = BUFFER);
   
   
   // フォントサイズ指定
-  // FIXME:CACHEタイプはサイズを変更する度、内部キャッシュが破棄される
+  // FIXME:サイズを変更する度、内部キャッシュが破棄される
   //       →処理が重くなる
   void size(const int size);
 
