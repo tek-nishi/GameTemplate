@@ -42,6 +42,75 @@ float& Color::g() { return green_; }
 float& Color::b() { return blue_; }
 float& Color::a() { return alpha_; }
 
+// 簡単な演算機能
+// FIXME:値が適正かどうか調べたほうがいいのか??
+Color Color::operator +(const Color& rhs) const {
+  Color added_color(red_   + rhs.red_,
+                    green_ + rhs.green_,
+                    blue_  + rhs.blue_,
+                    alpha_ + rhs.alpha_);
+
+  return added_color;
+}
+
+void Color::operator +=(const Color& rhs) {
+  red_   += rhs.red_;
+  green_ += rhs.green_;
+  blue_  += rhs.blue_;
+  alpha_ += rhs.alpha_;
+}
+
+Color Color::operator -(const Color& rhs) const {
+  Color added_color(red_   - rhs.red_,
+                    green_ - rhs.green_,
+                    blue_  - rhs.blue_,
+                    alpha_ - rhs.alpha_);
+
+  return added_color;
+}
+
+void Color::operator -=(const Color& rhs) {
+  red_   -= rhs.red_;
+  green_ -= rhs.green_;
+  blue_  -= rhs.blue_;
+  alpha_ -= rhs.alpha_;
+}
+
+Color Color::operator *(const float rhs) const {
+  Color mul_color(red_   * rhs,
+                  green_ * rhs,
+                  blue_  * rhs,
+                  alpha_ * rhs);
+
+  return mul_color;
+}
+
+void Color::operator *=(const float rhs) {
+  red_   *= rhs;
+  green_ *= rhs;
+  blue_  *= rhs;
+  alpha_ *= rhs;
+}
+
+Color Color::operator /(const float rhs) const {
+  assert(rhs != 0.0f);
+  
+  Color dev_color(red_   / rhs,
+                  green_ / rhs,
+                  blue_  / rhs,
+                  alpha_ / rhs);
+
+  return dev_color;
+}
+
+void Color::operator /=(const float rhs) {
+  assert(rhs != 0.0f);
+
+  red_   /= rhs;
+  green_ /= rhs;
+  blue_  /= rhs;
+  alpha_ /= rhs;
+}
 
 // OpenGLへ描画色を指定
 void Color::setToGl() const {

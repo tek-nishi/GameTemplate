@@ -45,6 +45,15 @@ public:
   float& b();
   float& a();
 
+  // 簡単な演算機能
+  Color operator +(const Color& rhs) const;
+  void operator +=(const Color& rhs);
+  Color operator -(const Color& rhs) const;
+  void operator -=(const Color& rhs);
+  Color operator *(const float rhs) const;
+  void operator *=(const float rhs);
+  Color operator /(const float rhs) const;
+  void operator /=(const float rhs);
   
   // OpenGLへ描画色を指定
   void setToGl() const;
