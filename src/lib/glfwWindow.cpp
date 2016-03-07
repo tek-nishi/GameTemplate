@@ -34,11 +34,8 @@ GlfwWindow::GlfwWindow(const int width, const int height,
   glfwMakeContextCurrent(window_);
   glfwSwapInterval(1);
 
-
   // TIPS:GLEWの初期化はglfwMakeContextCurrentの後で
-  if (!initGlExt()) {
-    throw "Can't use OpenGL extensions.";
-  }
+  if (!initGlExt()) throw "Can't use OpenGL extensions.";
 }
 
 GlfwWindow::~GlfwWindow() {

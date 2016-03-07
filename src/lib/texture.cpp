@@ -6,11 +6,15 @@
 #include "texture.hpp"
 #include <iostream>
 #include <string>
+#include <cassert>
 #include "png.hpp"
 #include "utils.hpp"
 
 
-Texture::Texture() {}
+Texture::Texture()
+  : width_(0),
+    height_(0)
+{}
 
 Texture::Texture(const std::string& filename) :
   gl_texture_(std::make_shared<GlTexture>())
@@ -26,6 +30,7 @@ int Texture::height() const { return height_; }
 
 // OpenGLのコンテキストに拘束する
 void Texture::bind() const {
+  assert(gl_texture_ && "Empty texture.");
   gl_texture_->bind();
 }
 
