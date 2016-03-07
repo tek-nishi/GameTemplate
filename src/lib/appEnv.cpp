@@ -204,22 +204,22 @@ void AppEnv::mouseCursor(const bool disp) {
 // 当該ボタンが押されているならtrueを返す
 // button Mouse::LEFT
 //        Mouse::Right
-bool AppEnv::isPressButton(const int button) {
-  return press_buttons_.count(button);
+bool AppEnv::isPressButton(const Mouse button) {
+  return press_buttons_.count(static_cast<int>(button));
 }
   
 // 当該ボタンが押された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPushButton(const int button) {
-  return push_buttons_.count(button);
+bool AppEnv::isPushButton(const Mouse button) {
+  return push_buttons_.count(static_cast<int>(button));
 }
 
 // 当該ボタンが離された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPullButton(const int button) {
-  return pull_buttons_.count(button);
+bool AppEnv::isPullButton(const Mouse button) {
+  return pull_buttons_.count(static_cast<int>(button));
 }
 
 
@@ -250,12 +250,12 @@ void AppEnv::createKeyInfo(GLFWwindow* window, const int key, const int scancode
   // キーのpush,press,pull情報を生成
   switch (action) {
   case GLFW_PRESS:
-    obj->push_keys_.insert(std::set<int>::value_type(key));
-    obj->press_keys_.insert(std::set<int>::value_type(key));
+    obj->push_keys_.insert(key);
+    obj->press_keys_.insert(key);
     break;
 
   case GLFW_RELEASE:
-    obj->pull_keys_.insert(std::set<int>::value_type(key));
+    obj->pull_keys_.insert(key);
     obj->press_keys_.erase(key);
     break;
   }
@@ -282,12 +282,12 @@ void AppEnv::mouseButtonCallback(GLFWwindow* window, const int button, const int
   // ボタン入力情報を生成
   switch (action) {
   case GLFW_PRESS:
-    obj->push_buttons_.insert(std::set<int>::value_type(button));
-    obj->press_buttons_.insert(std::set<int>::value_type(button));
+    obj->push_buttons_.insert(button);
+    obj->press_buttons_.insert(button);
     break;
 
   case GLFW_RELEASE:
-    obj->pull_buttons_.insert(std::set<int>::value_type(button));
+    obj->pull_buttons_.insert(button);
     obj->press_buttons_.erase(button);
     break;
   }

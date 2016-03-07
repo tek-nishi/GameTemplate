@@ -17,7 +17,7 @@
 
 
 // マウスボタンの省略名を定義
-enum Mouse {
+enum class Mouse {
   LEFT  = GLFW_MOUSE_BUTTON_LEFT,
   RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
 };
@@ -150,17 +150,17 @@ public:
   // 当該ボタンが押されているならtrueを返す
   // button Mouse::LEFT
   //        Mouse::Right
-  bool isPressButton(const int button);
+  bool isPressButton(const Mouse button);
   
   // 当該ボタンが押された瞬間trueを返す
   // button Mouse::LEFT
   //        Mouse::RIGHT
-  bool isPushButton(const int button);
+  bool isPushButton(const Mouse button);
 
   // 当該ボタンが離された瞬間trueを返す
   // button Mouse::LEFT
   //        Mouse::RIGHT
-  bool isPullButton(const int button);
+  bool isPullButton(const Mouse button);
 
 
   // GamePadの接続数
