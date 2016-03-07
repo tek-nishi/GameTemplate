@@ -57,10 +57,6 @@ class AppEnv {
   std::set<int> press_keys_;
 
   // マウス関連
-  bool  mouse_left_press_;
-  bool  mouse_right_press_;
-  Vec2f mouse_pos_;
-  Vec2f mouse_last_pos_;
   Vec2f mouse_current_pos_;
 
   std::set<int> push_buttons_;

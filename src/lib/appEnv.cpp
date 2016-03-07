@@ -18,10 +18,6 @@ AppEnv::AppEnv(const int width, const int height,
   viewport_ofs_(0, 0),
   viewport_size_(width, height),
   bg_color_(0, 0, 0, 0),
-  mouse_left_press_(false),
-  mouse_right_press_(false),
-  mouse_pos_(0, 0),
-  mouse_last_pos_(0, 0),
   mouse_current_pos_(0, 0)
 {
   DOUT << "AppEnv()" << std::endl;
@@ -295,43 +291,16 @@ void AppEnv::mouseButtonCallback(GLFWwindow* window, const int button, const int
     obj->press_buttons_.erase(button);
     break;
   }
-    
-  double x_pos, y_pos;
-  glfwGetCursorPos(obj->window_(), &x_pos, &y_pos);
-
-  // TIPS:位置はmouseMoveCallbackで更新される
-#if 0
-  obj->mouse_current_pos_ = screenPosition(Vec2f(x_pos, y_pos), obj->current_window_size_);
-  // TIPS:Yは上下が逆
-  obj->mouse_current_pos_.y() = -obj->mouse_current_pos_.y();
-#endif
-    
-  switch (button) {
-  case GLFW_MOUSE_BUTTON_LEFT:
-    obj->mouse_left_press_ = (action == GLFW_PRESS) ? true : false;
-    obj->mouse_pos_ << x_pos, y_pos;
-    break;
-
-  case GLFW_MOUSE_BUTTON_RIGHT:
-    obj->mouse_right_press_ = (action == GLFW_PRESS) ? true : false;
-    obj->mouse_pos_ << x_pos, y_pos;
-    break;
-  }
 }
 
 void AppEnv::mouseMoveCallback(GLFWwindow* window, const double x_pos, const double y_pos) {
   auto* const obj = static_cast<AppEnv*>(glfwGetWindowUserPointer(window));
     
-  obj->mouse_current_pos_ = screenPosition(Vec2f(x_pos - obj->viewport_ofs_.x(), y_pos - obj->viewport_ofs_.y()),
-                                           obj->current_window_size_,
-                                           Vec2f(obj->viewport_size_.x(), obj->viewport_size_.y()));
+  Vec2f pos = screenPosition(Vec2f(x_pos - obj->viewport_ofs_.x(), y_pos - obj->viewport_ofs_.y()),
+                             obj->current_window_size_,
+                             Vec2f(obj->viewport_size_.x(), obj->viewport_size_.y()));
   // TIPS:Yは上下が逆
-  obj->mouse_current_pos_.y() = -obj->mouse_current_pos_.y();
-
-  if (!obj->mouse_left_press_ && !obj->mouse_right_press_) return;
-
-  obj->mouse_last_pos_ = obj->mouse_pos_;
-  obj->mouse_pos_ << x_pos, y_pos;
+  obj->mouse_current_pos_ << pos.x(), -pos.y();
 }
 
 // 画面中央が(0, 0)の座標を計算
@@ -339,12 +308,14 @@ Vec2f AppEnv::screenPosition(const Vec2f& pos, const Vec2f& window, const Vec2f&
   // ウインドウサイズと描画サイズの違いも考慮する
   Vec2f screen_rate(window.array() / viewport.array());
   Vec2f view_pos(pos - viewport / 2.0f);
+
   return Vec2f(view_pos.array() * screen_rate.array());
 }
 
 // 画面中央が(0, 0)の座標→左上が(0, 0)の座標
 Vec2f AppEnv::windowPosition(const Vec2f& pos, const Vec2f& window, const Vec2f& viewport) {
   Vec2f screen_rate = window.array() / viewport.array();
+  
   return Vec2f(pos.array() / screen_rate.array()) + viewport / 2.0f;
 }
 
