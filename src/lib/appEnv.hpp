@@ -5,7 +5,6 @@
 //
 
 #include "defines.hpp"
-#include <array>
 #include <set>
 #include <vector>
 #include "glfwWindow.hpp"
@@ -47,16 +46,15 @@ class AppEnv {
   // 2D座標変換用カメラ
   Camera2D camera_2d_;
 
+  // 背景色
   Color bg_color_;
-
   
   // キー入力関連
   u_int pushed_key_;
 
-  std::array<std::set<int>, 2> push_keys_;
-  std::array<std::set<int>, 2> pull_keys_;
+  std::set<int> push_keys_;
+  std::set<int> pull_keys_;
   std::set<int> press_keys_;
-  int key_page_;
 
   // マウス関連
   bool  mouse_left_press_;
@@ -65,10 +63,9 @@ class AppEnv {
   Vec2f mouse_last_pos_;
   Vec2f mouse_current_pos_;
 
-  std::array<std::set<int>, 2> push_buttons_;
-  std::array<std::set<int>, 2> pull_buttons_;
+  std::set<int> push_buttons_;
+  std::set<int> pull_buttons_;
   std::set<int> press_buttons_;
-  int buttons_page_;
 
   // GamePad
   std::vector<GamePad> gamepads_;

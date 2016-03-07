@@ -18,13 +18,11 @@ AppEnv::AppEnv(const int width, const int height,
   viewport_ofs_(0, 0),
   viewport_size_(width, height),
   bg_color_(0, 0, 0, 0),
-  key_page_(0),
   mouse_left_press_(false),
   mouse_right_press_(false),
   mouse_pos_(0, 0),
   mouse_last_pos_(0, 0),
-  mouse_current_pos_(0, 0),
-  buttons_page_(0)
+  mouse_current_pos_(0, 0)
 {
   DOUT << "AppEnv()" << std::endl;
 
@@ -133,8 +131,6 @@ void AppEnv::end() {
   
 // 入力(キー＆ボタン)の再初期化
 void AppEnv::flushInput() {
-  // TIPS:二回呼び出しているのは、入力バッファがダブルバッファなので
-  switchInputBuffer();
   switchInputBuffer();
 }
   
@@ -172,21 +168,19 @@ u_int AppEnv::getPushedKey() const { return pushed_key_; }
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
 bool AppEnv::isPressKey(const int key) {
-  return press_keys_.find(key) != press_keys_.cend();
+  return press_keys_.count(key);
 }
   
 // 当該キーが押された瞬間trueを返す
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
 bool AppEnv::isPushKey(const int key) {
-  const auto& keys = push_keys_[key_page_];
-  return keys.find(key) != keys.cend();
+  return push_keys_.count(key);
 }
 
 // 当該キーが離された瞬間trueを返す
 bool AppEnv::isPullKey(const int key) {
-  const auto& keys = pull_keys_[key_page_];
-  return keys.find(key) != keys.cend();
+  return pull_keys_.count(key);
 }
 
   
@@ -215,23 +209,21 @@ void AppEnv::mouseCursor(const bool disp) {
 // button Mouse::LEFT
 //        Mouse::Right
 bool AppEnv::isPressButton(const int button) {
-  return press_buttons_.find(button) != press_buttons_.cend();
+  return press_buttons_.count(button);
 }
   
 // 当該ボタンが押された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
 bool AppEnv::isPushButton(const int button) {
-  const auto& buttons = push_buttons_[buttons_page_];
-  return buttons.find(button) != buttons.cend();
+  return push_buttons_.count(button);
 }
 
 // 当該ボタンが離された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
 bool AppEnv::isPullButton(const int button) {
-  const auto& buttons = pull_buttons_[buttons_page_];
-  return buttons.find(button) != buttons.cend();
+  return pull_buttons_.count(button);
 }
 
 
@@ -262,12 +254,12 @@ void AppEnv::createKeyInfo(GLFWwindow* window, const int key, const int scancode
   // キーのpush,press,pull情報を生成
   switch (action) {
   case GLFW_PRESS:
-    obj->push_keys_[obj->key_page_].insert(std::set<int>::value_type(key));
+    obj->push_keys_.insert(std::set<int>::value_type(key));
     obj->press_keys_.insert(std::set<int>::value_type(key));
     break;
 
   case GLFW_RELEASE:
-    obj->pull_keys_[obj->key_page_].insert(std::set<int>::value_type(key));
+    obj->pull_keys_.insert(std::set<int>::value_type(key));
     obj->press_keys_.erase(key);
     break;
   }
@@ -294,12 +286,12 @@ void AppEnv::mouseButtonCallback(GLFWwindow* window, const int button, const int
   // ボタン入力情報を生成
   switch (action) {
   case GLFW_PRESS:
-    obj->push_buttons_[obj->buttons_page_].insert(std::set<int>::value_type(button));
+    obj->push_buttons_.insert(std::set<int>::value_type(button));
     obj->press_buttons_.insert(std::set<int>::value_type(button));
     break;
 
   case GLFW_RELEASE:
-    obj->pull_buttons_[obj->buttons_page_].insert(std::set<int>::value_type(button));
+    obj->pull_buttons_.insert(std::set<int>::value_type(button));
     obj->press_buttons_.erase(button);
     break;
   }
@@ -359,15 +351,12 @@ Vec2f AppEnv::windowPosition(const Vec2f& pos, const Vec2f& window, const Vec2f&
 // 入力バッファを切り替える
 void AppEnv::switchInputBuffer() {
   pushed_key_ = 0;
-  key_page_ ^= 1;
 
-  push_keys_[key_page_].clear();
-  pull_keys_[key_page_].clear();
+  push_keys_.clear();
+  pull_keys_.clear();
 
-  buttons_page_ ^= 1;
-
-  push_buttons_[buttons_page_].clear();
-  pull_buttons_[buttons_page_].clear();
+  push_buttons_.clear();
+  pull_buttons_.clear();
 }
 
 // 動的Viewport(アスペクト比固定)
