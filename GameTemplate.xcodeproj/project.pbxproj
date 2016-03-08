@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470555371C8E908D005DADE5 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 470555361C8E908D005DADE5 /* libpng.a */; };
 		47120CB81A7CB0ED004263FC /* streaming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47120CB61A7CB0ED004263FC /* streaming.cpp */; };
 		47120CB91A7CB0ED004263FC /* streamWav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47120CB71A7CB0ED004263FC /* streamWav.cpp */; };
 		472C852518751939005FA3E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 472C852418751939005FA3E9 /* main.cpp */; };
@@ -35,12 +36,12 @@
 		47AF009318751DBF0038CA1E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF009218751DBF0038CA1E /* CoreVideo.framework */; };
 		47AF009818751E910038CA1E /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF009718751E910038CA1E /* libglfw3.a */; };
 		47C6B1161879262600C3E397 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6B1151879262600C3E397 /* libz.dylib */; };
-		47CA80B31896BE8300DEF3F7 /* lpng OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CA80B21896BE8300DEF3F7 /* lpng OSX.a */; };
 		47E1F9B91A17581100964AD1 /* glTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E1F9B81A17581100964AD1 /* glTexture.cpp */; };
 		47F8F5C11A32047B00399283 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F8F5C01A32047B00399283 /* libfreetype.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		470555361C8E908D005DADE5 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = OSX/lib/libpng.a; sourceTree = "<group>"; };
 		47120CB61A7CB0ED004263FC /* streaming.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = streaming.cpp; path = src/lib/streaming.cpp; sourceTree = "<group>"; };
 		47120CB71A7CB0ED004263FC /* streamWav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = streamWav.cpp; path = src/lib/streamWav.cpp; sourceTree = "<group>"; };
 		472C852418751939005FA3E9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -70,7 +71,6 @@
 		47AF009218751DBF0038CA1E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		47AF009718751E910038CA1E /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = OSX/lib/libglfw3.a; sourceTree = "<group>"; };
 		47C6B1151879262600C3E397 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		47CA80B21896BE8300DEF3F7 /* lpng OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "lpng OSX.a"; path = "OSX/lib/lpng OSX.a"; sourceTree = "<group>"; };
 		47D9C27A187517DD003D46FE /* GameTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E1F9B81A17581100964AD1 /* glTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glTexture.cpp; path = src/lib/glTexture.cpp; sourceTree = "<group>"; };
 		47F8F5C01A32047B00399283 /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = OSX/lib/libfreetype.a; sourceTree = "<group>"; };
@@ -81,9 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470555371C8E908D005DADE5 /* libpng.a in Frameworks */,
 				4782F1DF1A320AA200D34566 /* libFTGL.a in Frameworks */,
 				47F8F5C11A32047B00399283 /* libfreetype.a in Frameworks */,
-				47CA80B31896BE8300DEF3F7 /* lpng OSX.a in Frameworks */,
 				47A21418187D7D5300D960F7 /* OpenAL.framework in Frameworks */,
 				47C6B1161879262600C3E397 /* libz.dylib in Frameworks */,
 				47AF009818751E910038CA1E /* libglfw3.a in Frameworks */,
@@ -154,9 +154,9 @@
 		47D9C27C187517DD003D46FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				470555361C8E908D005DADE5 /* libpng.a */,
 				47F8F5C01A32047B00399283 /* libfreetype.a */,
 				4782F1DE1A320AA200D34566 /* libFTGL.a */,
-				47CA80B21896BE8300DEF3F7 /* lpng OSX.a */,
 				47AF009718751E910038CA1E /* libglfw3.a */,
 				47C6B1151879262600C3E397 /* libz.dylib */,
 				47A21417187D7D5300D960F7 /* OpenAL.framework */,
@@ -292,7 +292,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					include,
-					include/freetype2,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -330,7 +329,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					include,
-					include/freetype2,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -347,7 +345,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
-				LIBRARY_SEARCH_PATHS = OSX/lib;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
 				PRODUCT_NAME = GameTemplate;
 				WRAPPER_EXTENSION = app;
 			};
@@ -362,7 +360,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
-				LIBRARY_SEARCH_PATHS = OSX/lib;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
 				PRODUCT_NAME = GameTemplate;
 				WRAPPER_EXTENSION = app;
 			};
