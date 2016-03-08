@@ -149,9 +149,11 @@ void AppEnv::windowPosition(const Vec2i& pos) {
 }
 
 // ウインドウの位置を取得
+// FIXME:glfwGetWindowPos の引数がconstでないので、constにできない
 Vec2i AppEnv::windowPosition() {
   int x_pos;
   int y_pos;
+  
   glfwGetWindowPos(window_(), &x_pos, &y_pos);
     
   return Vec2i(x_pos, y_pos);
@@ -172,19 +174,19 @@ u_int AppEnv::getPushedKey() const { return pushed_key_; }
 // 当該キーが押されているならtrueを返す
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
-bool AppEnv::isPressKey(const int key) {
+bool AppEnv::isPressKey(const int key) const {
   return press_keys_.count(key);
 }
   
 // 当該キーが押された瞬間trueを返す
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
-bool AppEnv::isPushKey(const int key) {
+bool AppEnv::isPushKey(const int key) const {
   return push_keys_.count(key);
 }
 
 // 当該キーが離された瞬間trueを返す
-bool AppEnv::isPullKey(const int key) {
+bool AppEnv::isPullKey(const int key) const {
   return pull_keys_.count(key);
 }
 
@@ -213,21 +215,21 @@ void AppEnv::mouseCursor(const bool disp) {
 // 当該ボタンが押されているならtrueを返す
 // button Mouse::LEFT
 //        Mouse::Right
-bool AppEnv::isPressButton(const Mouse button) {
+bool AppEnv::isPressButton(const Mouse button) const {
   return press_buttons_.count(static_cast<int>(button));
 }
   
 // 当該ボタンが押された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPushButton(const Mouse button) {
+bool AppEnv::isPushButton(const Mouse button) const {
   return push_buttons_.count(static_cast<int>(button));
 }
 
 // 当該ボタンが離された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPullButton(const Mouse button) {
+bool AppEnv::isPullButton(const Mouse button) const {
   return pull_buttons_.count(static_cast<int>(button));
 }
 

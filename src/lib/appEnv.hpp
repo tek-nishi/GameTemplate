@@ -130,15 +130,15 @@ public:
   // 当該キーが押されているならtrueを返す
   // key 'A'とか'7'とか
   // SOURCE:include/GLFW/glfw3.h 271〜396
-  bool isPressKey(const int key);
+  bool isPressKey(const int key) const;
   
   // 当該キーが押された瞬間trueを返す
   // key 'A'とか'7'とか
   // SOURCE:include/GLFW/glfw3.h 271〜396
-  bool isPushKey(const int key);
+  bool isPushKey(const int key) const;
 
   // 当該キーが離された瞬間trueを返す
-  bool isPullKey(const int key);
+  bool isPullKey(const int key) const;
 
   
   // マウスのカーソル位置を返す
@@ -153,17 +153,17 @@ public:
   // 当該ボタンが押されているならtrueを返す
   // button Mouse::LEFT
   //        Mouse::Right
-  bool isPressButton(const Mouse button);
+  bool isPressButton(const Mouse button) const;
   
   // 当該ボタンが押された瞬間trueを返す
   // button Mouse::LEFT
   //        Mouse::RIGHT
-  bool isPushButton(const Mouse button);
+  bool isPushButton(const Mouse button) const;
 
   // 当該ボタンが離された瞬間trueを返す
   // button Mouse::LEFT
   //        Mouse::RIGHT
-  bool isPullButton(const Mouse button);
+  bool isPullButton(const Mouse button) const;
 
   // フォーカスの状態
   bool isFocus() const;
