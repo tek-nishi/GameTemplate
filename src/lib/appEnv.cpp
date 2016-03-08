@@ -18,7 +18,8 @@ AppEnv::AppEnv(const int width, const int height,
   viewport_ofs_(0, 0),
   viewport_size_(width, height),
   bg_color_(0, 0, 0, 0),
-  mouse_current_pos_(0, 0)
+  mouse_current_pos_(0, 0),
+  is_focus_(false)
 {
   DOUT << "AppEnv()" << std::endl;
 
@@ -40,6 +41,9 @@ AppEnv::AppEnv(const int width, const int height,
   glfwSetMouseButtonCallback(window_(), mouseButtonCallback);
   glfwSetCursorPosCallback(window_(), mouseMoveCallback);
 
+  // フォーカス
+  glfwSetWindowFocusCallback(window_(), focusCallback);
+  
   // GamePad
   gamepads_ = initGamePad();
   
@@ -121,7 +125,12 @@ void AppEnv::end() {
 
   // 入力(キー＆ボタン)の再初期化
   switchInputBuffer();
-    
+
+  if (!is_focus_) {
+    // TIPS:OSXはWindow全面が覆い隠されると、全速力で更新が行われてしまう
+    //      それに対処するためイベント待ちをおこなっている
+    glfwWaitEvents();
+  }
   glfwPollEvents();
 }
   
@@ -222,6 +231,8 @@ bool AppEnv::isPullButton(const Mouse button) {
   return pull_buttons_.count(static_cast<int>(button));
 }
 
+// フォーカス状態
+bool AppEnv::isFocus() const { return is_focus_; }
 
 // GamePadの接続数
 size_t AppEnv::numGamePad() const { return gamepads_.size(); }
@@ -301,6 +312,12 @@ void AppEnv::mouseMoveCallback(GLFWwindow* window, const double x_pos, const dou
                              Vec2f(obj->viewport_size_.x(), obj->viewport_size_.y()));
   // TIPS:Yは上下が逆
   obj->mouse_current_pos_ << pos.x(), -pos.y();
+}
+
+void AppEnv::focusCallback(GLFWwindow* window, int focus) {
+  auto* const obj = static_cast<AppEnv*>(glfwGetWindowUserPointer(window));
+
+  obj->is_focus_ = focus ? true : false;
 }
 
 // 画面中央が(0, 0)の座標を計算

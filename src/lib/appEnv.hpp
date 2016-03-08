@@ -63,6 +63,9 @@ class AppEnv {
   std::set<int> pull_buttons_;
   std::set<int> press_buttons_;
 
+  // Windowのフォーカス
+  bool is_focus_;
+  
   // GamePad
   std::vector<GamePad> gamepads_;
   
@@ -162,7 +165,9 @@ public:
   //        Mouse::RIGHT
   bool isPullButton(const Mouse button);
 
-
+  // フォーカスの状態
+  bool isFocus() const;
+  
   // GamePadの接続数
   size_t numGamePad() const;
 
@@ -188,6 +193,8 @@ private:
   static void mouseMoveCallback(GLFWwindow* window,
                                 const double x_pos, const double y_pos);
 
+  static void focusCallback(GLFWwindow* window, int focus);
+  
   // 画面中央が(0, 0)の座標を計算
   static Vec2f screenPosition(const Vec2f& pos, const Vec2f& window, const Vec2f& viewport);
 
