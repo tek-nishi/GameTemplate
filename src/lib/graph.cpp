@@ -53,11 +53,13 @@ Color Color::operator +(const Color& rhs) const {
   return added_color;
 }
 
-void Color::operator +=(const Color& rhs) {
+Color& Color::operator +=(const Color& rhs) {
   red_   += rhs.red_;
   green_ += rhs.green_;
   blue_  += rhs.blue_;
   alpha_ += rhs.alpha_;
+
+  return *this;
 }
 
 Color Color::operator -(const Color& rhs) const {
@@ -69,11 +71,13 @@ Color Color::operator -(const Color& rhs) const {
   return added_color;
 }
 
-void Color::operator -=(const Color& rhs) {
+Color& Color::operator -=(const Color& rhs) {
   red_   -= rhs.red_;
   green_ -= rhs.green_;
   blue_  -= rhs.blue_;
   alpha_ -= rhs.alpha_;
+
+  return *this;
 }
 
 Color Color::operator *(const float rhs) const {
@@ -85,11 +89,13 @@ Color Color::operator *(const float rhs) const {
   return mul_color;
 }
 
-void Color::operator *=(const float rhs) {
+Color& Color::operator *=(const float rhs) {
   red_   *= rhs;
   green_ *= rhs;
   blue_  *= rhs;
   alpha_ *= rhs;
+
+  return *this;
 }
 
 Color Color::operator /(const float rhs) const {
@@ -103,13 +109,15 @@ Color Color::operator /(const float rhs) const {
   return dev_color;
 }
 
-void Color::operator /=(const float rhs) {
+Color& Color::operator /=(const float rhs) {
   assert(rhs != 0.0f);
 
   red_   /= rhs;
   green_ /= rhs;
   blue_  /= rhs;
   alpha_ /= rhs;
+
+  return *this;
 }
 
 // OpenGLへ描画色を指定
