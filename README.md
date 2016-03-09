@@ -15,9 +15,9 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 
 ## 利用した外部ライブラリ
 + OpenGL 1.1
-+ GLFW 3.1
++ GLFW 3.2
 + OpenAL
-+ Freetype 2.5.4
++ Freetype 2.6.3
 + FTGL
-+ libpng 1.6.16
-+ Eigen 3.2.4
++ libpng 1.6.21
++ Eigen 3.2.8
