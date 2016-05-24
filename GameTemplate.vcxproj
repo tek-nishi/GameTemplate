@@ -64,6 +64,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GameTemplate</RootNamespace>
     <ProjectName>GameTemplate</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -91,11 +92,13 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>include;include/freetype2;Windows/include;$(IncludePath)</IncludePath>
     <LibraryPath>Windows/lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>include;include/freetype2;Windows/include;$(IncludePath)</IncludePath>
     <LibraryPath>Windows/lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
