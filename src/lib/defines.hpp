@@ -30,10 +30,7 @@ typedef unsigned long  u_long;
 
 // 文字リテラルをutf-8に
 // FIXME:パス名に英数字以外を使うと読めない
-// TIPS:VS2015でUTF-8文字リテラルが指定できるようになった!!
-#if (_MSC_VER < 1900)
 #pragma execution_character_set("utf-8")
-#endif
 
 // TIPS:std::min std::maxを使うための定義
 #define NOMINMAX

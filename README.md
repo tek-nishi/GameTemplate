@@ -22,7 +22,7 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 + libpng 1.6.21
 + Eigen 3.2.8
 
-## Liense
+## License
 License All source code files are licensed under the MPLv2.0 license
 
 [MPLv2.0](https://www.mozilla.org/MPL/2.0/)
