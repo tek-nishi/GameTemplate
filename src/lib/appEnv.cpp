@@ -182,19 +182,19 @@ u_int AppEnv::getPushedKey() const { return pushed_key_; }
 // 当該キーが押されているならtrueを返す
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
-bool AppEnv::isPressKey(const int key) const {
+bool AppEnv::isKeyPressing(const int key) const {
   return press_keys_.count(key);
 }
   
 // 当該キーが押された瞬間trueを返す
 // key 'A'とか'7'とか
 // SOURCE:include/GLFW/glfw3.h 271〜396
-bool AppEnv::isPushKey(const int key) const {
+bool AppEnv::isKeyPushed(const int key) const {
   return push_keys_.count(key);
 }
 
 // 当該キーが離された瞬間trueを返す
-bool AppEnv::isPullKey(const int key) const {
+bool AppEnv::isKeyReleased(const int key) const {
   return pull_keys_.count(key);
 }
 
@@ -223,21 +223,21 @@ void AppEnv::mouseCursor(const bool disp) {
 // 当該ボタンが押されているならtrueを返す
 // button Mouse::LEFT
 //        Mouse::Right
-bool AppEnv::isPressButton(const Mouse button) const {
+bool AppEnv::isButtonPressing(const Mouse button) const {
   return press_buttons_.count(static_cast<int>(button));
 }
   
 // 当該ボタンが押された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPushButton(const Mouse button) const {
+bool AppEnv::isButtonPushed(const Mouse button) const {
   return push_buttons_.count(static_cast<int>(button));
 }
 
 // 当該ボタンが離された瞬間trueを返す
 // button Mouse::LEFT
 //        Mouse::RIGHT
-bool AppEnv::isPullButton(const Mouse button) const {
+bool AppEnv::isButtonReleased(const Mouse button) const {
   return pull_buttons_.count(static_cast<int>(button));
 }
 
