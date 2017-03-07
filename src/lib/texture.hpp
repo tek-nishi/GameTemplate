@@ -39,6 +39,6 @@ private:
   // テクスチャの基本的なパラメーター設定を行う
   static void setupParam();
   
-	void setupPng(const std::string& filename);
+	void setupImage(const std::string& filename);
   
 };

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		470555371C8E908D005DADE5 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 470555361C8E908D005DADE5 /* libpng.a */; };
 		47120CB81A7CB0ED004263FC /* streaming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47120CB61A7CB0ED004263FC /* streaming.cpp */; };
 		47120CB91A7CB0ED004263FC /* streamWav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47120CB71A7CB0ED004263FC /* streamWav.cpp */; };
 		472C852518751939005FA3E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 472C852418751939005FA3E9 /* main.cpp */; };
 		47648CB21A3A8CB100E61146 /* gamePad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47648CB11A3A8CB100E61146 /* gamePad.cpp */; };
+		477581741E6EA7AC00BA3B85 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 477581731E6EA7AC00BA3B85 /* image.cpp */; };
 		4782F1DF1A320AA200D34566 /* libFTGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4782F1DE1A320AA200D34566 /* libFTGL.a */; };
 		4782F1E31A328F0400D34566 /* font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4782F1E21A328F0400D34566 /* font.cpp */; };
 		47A026CA198939ED003F5E5B /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026C9198939ED003F5E5B /* utils.cpp */; };
@@ -19,7 +19,6 @@
 		47A026CE19893E11003F5E5B /* wav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026CD19893E11003F5E5B /* wav.cpp */; };
 		47A026D019893F80003F5E5B /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026CF19893F80003F5E5B /* texture.cpp */; };
 		47A026D21989408C003F5E5B /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D11989408C003F5E5B /* random.cpp */; };
-		47A026D4198941B6003F5E5B /* png.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D3198941B6003F5E5B /* png.cpp */; };
 		47A026D6198942F3003F5E5B /* os_osx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D5198942F3003F5E5B /* os_osx.cpp */; };
 		47A026D8198947B8003F5E5B /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D7198947B8003F5E5B /* matrix.cpp */; };
 		47A026DA1989493B003F5E5B /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D91989493B003F5E5B /* graph.cpp */; };
@@ -35,7 +34,6 @@
 		47AF009118751D800038CA1E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF009018751D800038CA1E /* IOKit.framework */; };
 		47AF009318751DBF0038CA1E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF009218751DBF0038CA1E /* CoreVideo.framework */; };
 		47AF009818751E910038CA1E /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF009718751E910038CA1E /* libglfw3.a */; };
-		47C6B1161879262600C3E397 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C6B1151879262600C3E397 /* libz.dylib */; };
 		47E1F9B91A17581100964AD1 /* glTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47E1F9B81A17581100964AD1 /* glTexture.cpp */; };
 		47F8F5C11A32047B00399283 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F8F5C01A32047B00399283 /* libfreetype.a */; };
 /* End PBXBuildFile section */
@@ -47,6 +45,7 @@
 		472C852418751939005FA3E9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		472C852618751950005FA3E9 /* GameTemplate-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GameTemplate-Info.plist"; path = "OSX/GameTemplate-Info.plist"; sourceTree = "<group>"; };
 		47648CB11A3A8CB100E61146 /* gamePad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamePad.cpp; path = src/lib/gamePad.cpp; sourceTree = "<group>"; };
+		477581731E6EA7AC00BA3B85 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = src/lib/image.cpp; sourceTree = "<group>"; };
 		4782F1DE1A320AA200D34566 /* libFTGL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFTGL.a; path = OSX/lib/libFTGL.a; sourceTree = "<group>"; };
 		4782F1E21A328F0400D34566 /* font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = font.cpp; path = src/lib/font.cpp; sourceTree = "<group>"; };
 		47A026C9198939ED003F5E5B /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/lib/utils.cpp; sourceTree = "<group>"; };
@@ -54,7 +53,6 @@
 		47A026CD19893E11003F5E5B /* wav.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wav.cpp; path = src/lib/wav.cpp; sourceTree = "<group>"; };
 		47A026CF19893F80003F5E5B /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = texture.cpp; path = src/lib/texture.cpp; sourceTree = "<group>"; };
 		47A026D11989408C003F5E5B /* random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = random.cpp; path = src/lib/random.cpp; sourceTree = "<group>"; };
-		47A026D3198941B6003F5E5B /* png.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = png.cpp; path = src/lib/png.cpp; sourceTree = "<group>"; };
 		47A026D5198942F3003F5E5B /* os_osx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = os_osx.cpp; path = src/lib/os_osx.cpp; sourceTree = "<group>"; };
 		47A026D7198947B8003F5E5B /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matrix.cpp; path = src/lib/matrix.cpp; sourceTree = "<group>"; };
 		47A026D91989493B003F5E5B /* graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graph.cpp; path = src/lib/graph.cpp; sourceTree = "<group>"; };
@@ -81,11 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				470555371C8E908D005DADE5 /* libpng.a in Frameworks */,
 				4782F1DF1A320AA200D34566 /* libFTGL.a in Frameworks */,
 				47F8F5C11A32047B00399283 /* libfreetype.a in Frameworks */,
 				47A21418187D7D5300D960F7 /* OpenAL.framework in Frameworks */,
-				47C6B1161879262600C3E397 /* libz.dylib in Frameworks */,
 				47AF009818751E910038CA1E /* libglfw3.a in Frameworks */,
 				47AF009318751DBF0038CA1E /* CoreVideo.framework in Frameworks */,
 				47AF009118751D800038CA1E /* IOKit.framework in Frameworks */,
@@ -100,6 +96,7 @@
 		47A026C8198939DC003F5E5B /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				477581731E6EA7AC00BA3B85 /* image.cpp */,
 				47120CB61A7CB0ED004263FC /* streaming.cpp */,
 				47120CB71A7CB0ED004263FC /* streamWav.cpp */,
 				47A026E3198950B2003F5E5B /* appEnv.cpp */,
@@ -112,7 +109,6 @@
 				47A026D91989493B003F5E5B /* graph.cpp */,
 				47A026D7198947B8003F5E5B /* matrix.cpp */,
 				47A026D5198942F3003F5E5B /* os_osx.cpp */,
-				47A026D3198941B6003F5E5B /* png.cpp */,
 				47A026D11989408C003F5E5B /* random.cpp */,
 				47E1F9B81A17581100964AD1 /* glTexture.cpp */,
 				47A026CF19893F80003F5E5B /* texture.cpp */,
@@ -239,6 +235,7 @@
 				47A026DA1989493B003F5E5B /* graph.cpp in Sources */,
 				47A026D21989408C003F5E5B /* random.cpp in Sources */,
 				47A026E219894E3C003F5E5B /* audio.cpp in Sources */,
+				477581741E6EA7AC00BA3B85 /* image.cpp in Sources */,
 				47A026CE19893E11003F5E5B /* wav.cpp in Sources */,
 				47A026CA198939ED003F5E5B /* utils.cpp in Sources */,
 				47A026DE19894B87003F5E5B /* glExt.cpp in Sources */,
@@ -246,7 +243,6 @@
 				4782F1E31A328F0400D34566 /* font.cpp in Sources */,
 				47A026D8198947B8003F5E5B /* matrix.cpp in Sources */,
 				47A026DC19894A61003F5E5B /* glfwWindow.cpp in Sources */,
-				47A026D4198941B6003F5E5B /* png.cpp in Sources */,
 				47A026D6198942F3003F5E5B /* os_osx.cpp in Sources */,
 				47A026D019893F80003F5E5B /* texture.cpp in Sources */,
 				47A026E4198950B2003F5E5B /* appEnv.cpp in Sources */,
@@ -293,7 +289,6 @@
 					"$(inherited)",
 					include,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
@@ -330,7 +325,6 @@
 					"$(inherited)",
 					include,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 			};

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-#include "png.hpp"
+#include "image.hpp"
 #include "utils.hpp"
 
 
@@ -16,11 +16,11 @@ Texture::Texture()
     height_(0)
 {}
 
-Texture::Texture(const std::string& filename) :
-  gl_texture_(std::make_shared<GlTexture>())
+Texture::Texture(const std::string& filename)
+  : gl_texture_(std::make_shared<GlTexture>())
 {
   DOUT << "Texture()" << std::endl;
-  setupPng(filename);
+  setupImage(filename);
 }
 	
 
@@ -49,10 +49,10 @@ void Texture::setupParam() {
 }
 
   
-void Texture::setupPng(const std::string& filename) {
-  Png png_obj(filename);
-  width_ = png_obj.width();
-  height_ = png_obj.height();
+void Texture::setupImage(const std::string& filename) {
+  Image obj(filename);
+  width_ = obj.width();
+  height_ = obj.height();
   if ((width_ != int2pow(width_)) || (height_ != int2pow(height_))) {
     DOUT << "Texture size error " << width_ << ":" << height_ << std::endl;
     // サイズが2のべき乗でなければエラー
@@ -61,9 +61,14 @@ void Texture::setupPng(const std::string& filename) {
 
   bind();
   setupParam();
-
-  GLint type = (png_obj.type() == PNG_COLOR_TYPE_RGB) ? GL_RGB : GL_RGBA;
-  glTexImage2D(GL_TEXTURE_2D, 0, type, width_, height_, 0, type, GL_UNSIGNED_BYTE, png_obj.image());
-		
-  DOUT << "Texture:" << ((type == GL_RGB) ? " RGB" : " RGBA") << std::endl;
+  
+  GLint type;
+  if (obj.isGrayscale()) {
+    type = obj.hasAlpha() ? GL_LUMINANCE_ALPHA : GL_LUMINANCE;
+  }
+  else {
+    type = obj.hasAlpha() ? GL_RGBA : GL_RGB;
+  }
+  
+  glTexImage2D(GL_TEXTURE_2D, 0, type, width_, height_, 0, type, GL_UNSIGNED_BYTE, obj.image());
 }
