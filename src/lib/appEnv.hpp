@@ -22,6 +22,30 @@ enum class Mouse {
   RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
 };
 
+// よく使うキーの別名を定義
+enum Key {
+  KEY_ESC           = GLFW_KEY_ESCAPE,
+  KEY_ENTER         = GLFW_KEY_ENTER,
+  KEY_TAB           = GLFW_KEY_TAB,
+  KEY_RIGHT         = GLFW_KEY_RIGHT,
+  KEY_LEFT          = GLFW_KEY_LEFT,
+  KEY_DOWN          = GLFW_KEY_DOWN,
+  KEY_UP            = GLFW_KEY_UP,
+  KEY_LEFT_SHIFT    = GLFW_KEY_LEFT_SHIFT,
+  KEY_RIGHT_SHIFT   = GLFW_KEY_RIGHT_SHIFT,
+  KEY_LEFT_CONTROL  = GLFW_KEY_LEFT_CONTROL,
+  KEY_RIGHT_CONTROL = GLFW_KEY_RIGHT_CONTROL,
+  KEY_LEFT_ALT      = GLFW_KEY_LEFT_ALT,
+  KEY_RIGHT_ALT     = GLFW_KEY_RIGHT_ALT,
+};
+
+// 画面モード
+enum class Screen {
+  DEFAULT,          // ありのまま
+  DYNAMIC,          // ウインドウサイズに合わせて内容を拡大縮小
+  FULL,             // フルスクリーン
+};
+
 
 class AppEnv {
   // OS固有処理
@@ -82,7 +106,7 @@ public:
   // full_screen   true: フルスクリーン
   // dynamic_size  true: ウインドウサイズにあわせて画面を変更
   AppEnv(const int width, const int height,
-         const bool full_screen = false, const bool dynamic_size = false);
+         const Screen type = Screen::DEFAULT);
 
   // TIPS:このクラスはコピー禁止
   AppEnv(const AppEnv&) = delete;
@@ -208,6 +232,10 @@ private:
   // 入力バッファを切り替える
   void switchInputBuffer();
 
+  // 画面モード判定
+  static bool isDynamic(const Screen type);
+  static bool isFullscreen(const Screen type);
+  
   // 動的Viewport(アスペクト比固定)
   void dynamicViewport(const int width, const int height);
   

@@ -10,11 +10,10 @@
 
 
 // アプリのウインドウサイズ
-enum Window {
-  WIDTH  = 512,
-  HEIGHT = 512
+enum Size {
+  WIDTH  = 800,
+  HEIGHT = 600
 };
-
 
 //
 // メインプログラム
@@ -23,14 +22,14 @@ int main() {
   // アプリウインドウを生成
   // GLFWとOpenGLの初期化
   // TIPS:色々な型が依存しているので、最初に生成する事
-  AppEnv env(Window::WIDTH, Window::HEIGHT);
+  AppEnv env(Size::WIDTH, Size::HEIGHT);
 
   while (env.isOpen()) {
     // 開始
     env.begin();
 
     //
-    // アプリの処理をここに書く
+    // ここにアプリの処理を書く
     //
 
     // 終了

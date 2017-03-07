@@ -7,20 +7,21 @@
 
 
 // width, height 生成時のサイズ
-// full_screen   true: フルスクリーン
-// dynamic_size  true: ウインドウサイズにあわせて画面を変更
+// type          画面モード Screen::DEFAULT
+//                          Screen::DYNAMIC 画面リサイズ時に表示を拡大縮小
+//                          Screen::FULL    フルスクリーン
 AppEnv::AppEnv(const int width, const int height,
-               const bool full_screen, const bool dynamic_size) :
-  dynamic_window_size_(dynamic_size),
-  window_(width, height, false, full_screen),
-  window_size_(width, height),
-  current_window_size_(window_size_),
-  viewport_ofs_(0, 0),
-  viewport_size_(width, height),
-  framebuffer_ofs_(0, 0),
-  bg_color_(0, 0, 0, 0),
-  mouse_current_pos_(0, 0),
-  is_focus_(false)
+               const Screen type)
+  : dynamic_window_size_(isDynamic(type)),
+    window_(width, height, false, isFullscreen(type)),
+    window_size_(width, height),
+    current_window_size_(window_size_),
+    viewport_ofs_(0, 0),
+    viewport_size_(width, height),
+    framebuffer_ofs_(0, 0),
+    bg_color_(0, 0, 0, 0),
+    mouse_current_pos_(0, 0),
+    is_focus_(false)
 {
   DOUT << "AppEnv()" << std::endl;
 
@@ -61,14 +62,19 @@ AppEnv::AppEnv(const int width, const int height,
   // Windowの表示開始
   glfwShowWindow(window_());
 
-  if (full_screen) {
+  if (isFullscreen(type)) {
     // フルスクリーンはモニタによって解像度がまちまちなので、viewportで補正
-    int width, height;
-    glfwGetFramebufferSize(window_(), &width, &height);
-    DOUT << "framebuffer size:" << width << "," << height << std::endl;
+    // int width, height;
+    // glfwGetFramebufferSize(window_(), &width, &height);
+    // DOUT << "framebuffer size:" << width << "," << height << std::endl;
 
     dynamicViewport(width, height);
   }
+
+  DOUT << "FB:" << framebuffer_size_.x() << "x" << framebuffer_size_.y() << std::endl
+       << "   " << framebuffer_ofs_.x() << "x" << framebuffer_ofs_.y() << std::endl
+       << "VP:" << viewport_size_.x() << "x" << viewport_size_.y() << std::endl
+       << "   " << viewport_ofs_.x() << "x" << viewport_ofs_.y() << std::endl;
 }
 
 
@@ -362,6 +368,15 @@ void AppEnv::switchInputBuffer() {
 
   push_buttons_.clear();
   pull_buttons_.clear();
+}
+
+// 画面モード判定
+bool AppEnv::isDynamic(const Screen type) {
+  return type == Screen::DYNAMIC;
+}
+
+bool AppEnv::isFullscreen(const Screen type) {
+  return type == Screen::FULL;
 }
 
 // 動的Viewport(アスペクト比固定)
