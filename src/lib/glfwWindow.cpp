@@ -25,12 +25,12 @@ GlfwWindow::GlfwWindow(const int width, const int height,
   if (!glfwInit()) throw "Can't Initialize GLFW.";
 
   if (!is_visible) glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
-    
+
   window_ = glfwCreateWindow(width, height, PREPRO_TO_STR(PRODUCT_NAME),
                              is_fullscreen ? glfwGetPrimaryMonitor() : nullptr, nullptr);
 
   if (!window_) throw "Can't create GLFW window.";
-    
+
   glfwMakeContextCurrent(window_);
   glfwSwapInterval(1);
 

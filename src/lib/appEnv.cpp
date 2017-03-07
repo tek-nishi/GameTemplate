@@ -18,7 +18,6 @@ AppEnv::AppEnv(const int width, const int height,
     current_window_size_(window_size_),
     viewport_ofs_(0, 0),
     viewport_size_(width, height),
-    framebuffer_ofs_(0, 0),
     bg_color_(0, 0, 0, 0),
     mouse_current_pos_(0, 0),
     is_focus_(false)
@@ -51,30 +50,18 @@ AppEnv::AppEnv(const int width, const int height,
   
   glEnable(GL_POINT_SMOOTH);
   glEnable(GL_LINE_SMOOTH);
-
-  // フレームバッファサイズ取得
-  int framebuffer_width;
-  int framebuffer_height;
-  glfwGetFramebufferSize(window_(),
-                         &framebuffer_width, &framebuffer_height);
-  framebuffer_size_ << framebuffer_width, framebuffer_height;
   
   // Windowの表示開始
   glfwShowWindow(window_());
 
   if (isFullscreen(type)) {
     // フルスクリーンはモニタによって解像度がまちまちなので、viewportで補正
-    // int width, height;
-    // glfwGetFramebufferSize(window_(), &width, &height);
-    // DOUT << "framebuffer size:" << width << "," << height << std::endl;
+    int width, height;
+    glfwGetFramebufferSize(window_(), &width, &height);
+    DOUT << "framebuffer size:" << width << "," << height << std::endl;
 
     dynamicViewport(width, height);
   }
-
-  DOUT << "FB:" << framebuffer_size_.x() << "x" << framebuffer_size_.y() << std::endl
-       << "   " << framebuffer_ofs_.x() << "x" << framebuffer_ofs_.y() << std::endl
-       << "VP:" << viewport_size_.x() << "x" << viewport_size_.y() << std::endl
-       << "   " << viewport_ofs_.x() << "x" << viewport_ofs_.y() << std::endl;
 }
 
 
@@ -92,8 +79,8 @@ const GLFWwindow* const AppEnv::getGlfwHandle() const {return window_(); }
 
 // アプリ更新処理開始
 void AppEnv::begin() {
-  glViewport(framebuffer_ofs_.x(), framebuffer_ofs_.y(),
-             framebuffer_size_.x(), framebuffer_size_.y());
+  glViewport(viewport_ofs_.x(), viewport_ofs_.y(),
+             viewport_size_.x(), viewport_size_.y());
   
   // ウインドウの内容を指定色で消去
   glClearColor(bg_color_.r(), bg_color_.g(), bg_color_.b(), bg_color_.a());
@@ -292,12 +279,6 @@ void AppEnv::changeWindowSize(GLFWwindow* window, const int width, const int hei
   // ウインドウサイズの変更をアプリに伝える
   auto* const obj = static_cast<AppEnv*>(glfwGetWindowUserPointer(window));
 
-  int framebuffer_width;
-  int framebuffer_height;
-  glfwGetFramebufferSize(window,
-                         &framebuffer_width, &framebuffer_height);
-  obj->framebuffer_size_ << framebuffer_width, framebuffer_height;
-
   if (obj->dynamic_window_size_) {
     // 描画サイズは固定(アスペクト比固定)
     obj->dynamicViewport(width, height);
@@ -395,16 +376,6 @@ void AppEnv::dynamicViewport(const int width, const int height) {
     // 上下に余白が入る
     viewport_ofs_  << 0, (height - window_height) / 2;
     viewport_size_ << window_width, window_height;
-
-    {
-      // Retinaへ対応するための措置
-      int window_width  = framebuffer_size_.x();
-      int window_height = framebuffer_size_.x() * view_aspect;
-
-      // 上下に余白が入る
-      framebuffer_ofs_  << 0, (framebuffer_size_.y() - window_height) / 2;
-      framebuffer_size_ << window_width, window_height;
-    }
   }
   else {
     int window_width  = height / view_aspect;
@@ -413,16 +384,6 @@ void AppEnv::dynamicViewport(const int width, const int height) {
     // 左右に余白が入る
     viewport_ofs_  << (width - window_width) / 2, 0;
     viewport_size_ << window_width, window_height;
-
-    {
-      // Retinaへ対応するための措置
-      int window_width  = framebuffer_size_.y() / view_aspect;
-      int window_height = framebuffer_size_.y();
-
-      // 左右に余白が入る
-      framebuffer_ofs_  << (framebuffer_size_.x() - window_width) / 2, 0;
-      framebuffer_size_ << window_width, window_height;
-    }
   }
 }
   

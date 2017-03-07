@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B49C5D396397AA2F8FD0F7AADBF94732128FADA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "b3f6cf35-63c7-4cdf-b0e1-89249ca97818" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0B49C5D396397AA2F8FD0F7AADBF94732128FADA" : 0,
+    "b3f6cf35-63c7-4cdf-b0e1-89249ca97818" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "32B4C784-8D0C-4B8D-8283-4E137827FC8C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0B49C5D396397AA2F8FD0F7AADBF94732128FADA" : "GameTemplate\/",
+    "b3f6cf35-63c7-4cdf-b0e1-89249ca97818" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GameTemplate",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GameTemplate.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ssa-study\/GameTemplate.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B49C5D396397AA2F8FD0F7AADBF94732128FADA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/ssa.techarts.co.jp\/ssa",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "b3f6cf35-63c7-4cdf-b0e1-89249ca97818"
+    }
+  ]
+}

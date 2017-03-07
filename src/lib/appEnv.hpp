@@ -65,11 +65,6 @@ class AppEnv {
 
   Vec2i viewport_ofs_;
   Vec2i viewport_size_;
-
-  // macOSのフレームバッファサイズはRetinaだと
-  // Windowサイズと異なるので別に用意
-  Vec2f framebuffer_ofs_;
-  Vec2f framebuffer_size_;
   
   // 2D座標変換用カメラ
   Camera2D camera_2d_;
