@@ -15,12 +15,12 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 
 ## 利用した外部ライブラリ
 + OpenGL 1.1
-+ GLFW 3.2
++ GLFW 3.2.1
 + OpenAL
 + Freetype 2.6.3
 + FTGL
-+ libpng 1.6.21
-+ Eigen 3.2.8
++ stb_image 2.3.4
++ Eigen 3.3.3
 
 ## License
 License All source code files are licensed under the MPLv2.0 license

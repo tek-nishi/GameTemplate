@@ -54,6 +54,9 @@ public:
   Color& operator *=(const float rhs);
   Color operator /(const float rhs) const;
   Color& operator /=(const float rhs);
+
+  // 全ての色をまとめて unsigned int 値にする
+  unsigned int rgba() const;
   
   // OpenGLへ描画色を指定
   void setToGl() const;

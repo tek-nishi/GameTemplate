@@ -5,46 +5,41 @@
 //
 
 #include "defines.hpp"
+#include <fontstash.h>
 #include <string>
 #include <memory>
 #include "vector.hpp"
 #include "graph.hpp"
-#include <FTGL/ftgl.h>
 
 
 class Font {
-  std::shared_ptr<FTFont> font_;
+  enum {
+    DEFAULT_SIZE = 20,
+  };
+
+  struct Context
+  {
+    std::shared_ptr<GlTexture> tex;
+    int width, height;
+  };
+
+  Context gl_;
+  FONScontext* context_;
+
+
+  // 以下、fontstashからのコールバック関数
+  static int create(void* userPtr, int width, int height);
+  static int resize(void* userPtr, int width, int height);
+  static void update(void* userPtr, int* rect, const unsigned char* data);
+  static void draw(void* userPtr, const float* verts, const float* tcoords, const unsigned int* colors, int nverts);
 
 
 public:
-  // フォント生成方式
-  enum {
-    // 一行ごとに文字を生成
-    BUFFER,
-    // 一文字ごとに生成してキャッシュする
-    CACHE,
-    // ポリゴンを生成
-    POLYGON
-  };
-
   // コンストラクタ
-  // font_path フォントファイル(ttf,otf)
-  // font_size 文字の大きさ
-  // mode      フォント生成方式(BUFFER, CACHE, POLYGON)
-  Font(const std::string& font_path, const int font_size,
-       const int mode = BUFFER);
+  // path フォントファイルのパス(ttf,otf)
+  Font(const std::string& path);
 
-  // フォントを読み込み直す
-  // font_path フォントファイル(ttf, otf)
-  // font_size 文字の大きさ
-  // mode      フォント生成方式(BUFFER, CACHE, POLYGON)
-  void read(const std::string& font_path, const int font_size,
-            const int mode = BUFFER);
-  
-  
   // フォントサイズ指定
-  // FIXME:サイズを変更する度、内部キャッシュが破棄される
-  //       →処理が重くなる
   void size(const int size);
 
   // 描画した時のサイズを取得
@@ -56,8 +51,4 @@ public:
   // color 表示色
   void draw(const std::string& text, const Vec2f& pos, const Color& color);
 
-
-private:
-  FTFont* setup(const std::string& font_path, const int mode);
-  
 };

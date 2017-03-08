@@ -120,11 +120,20 @@ Color& Color::operator /=(const float rhs) {
   return *this;
 }
 
+// 全ての色をまとめて unsigned int 値にする
+unsigned int Color::rgba() const {
+  unsigned char r8 = red_   * 255.0f;
+  unsigned char g8 = green_ * 255.0f;
+  unsigned char b8 = blue_  * 255.0f;
+  unsigned char a8 = alpha_ * 255.0f;
+    
+  return (r8) | (g8 << 8) | (b8 << 16) | (a8 << 24);
+}
+
 // OpenGLへ描画色を指定
 void Color::setToGl() const {
   glColor4f(red_, green_, blue_, alpha_);
 }
-
 
 // 定型色
 const Color Color::black   = Color(0.0f, 0.0f, 0.0f);

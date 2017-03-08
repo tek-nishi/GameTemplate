@@ -1,4 +1,6 @@
-﻿//
+﻿#pragma once
+
+//
 // stb_imageでの画像読み込み
 //
 
