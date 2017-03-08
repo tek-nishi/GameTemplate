@@ -6,7 +6,7 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 
 ## 用意されている機能
 + 基本図形(点・直線・矩形など)の描画
-+ PNG形式の画像ファイルの表示
++ 画像ファイルの表示
 + マウス入力
 + キー入力
 + WAV形式の音声ファイルの再生
@@ -17,10 +17,10 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 + OpenGL 1.1
 + GLFW 3.2.1
 + OpenAL
-+ Freetype 2.6.3
-+ FTGL
-+ stb_image 2.3.4
 + Eigen 3.3.3
++ stb_image 2.3.4
++ fontstash
++ stb_truetype 1.15
 
 ## License
 License All source code files are licensed under the MPLv2.0 license
