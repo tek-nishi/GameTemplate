@@ -57,9 +57,6 @@
     <ClInclude Include="src\lib\os_win.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib\png.hpp">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="src\lib\random.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -79,6 +76,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="src\lib\wav.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\image.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,9 +122,6 @@
     <ClCompile Include="src\lib\os_win.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\png.cpp">
-      <Filter>Lib</Filter>
-    </ClCompile>
     <ClCompile Include="src\lib\random.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
@@ -144,5 +141,8 @@
       <Filter>Lib</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\lib\image.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
