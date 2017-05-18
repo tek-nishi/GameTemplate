@@ -30,7 +30,7 @@ typedef unsigned long  u_long;
 
 // 文字リテラルをutf-8に
 // FIXME:パス名に英数字以外を使うと読めない
-#pragma execution_character_set("utf-8")
+// #pragma execution_character_set("utf-8")
 
 // TIPS:std::min std::maxを使うための定義
 #define NOMINMAX
