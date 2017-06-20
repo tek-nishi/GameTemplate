@@ -30,7 +30,7 @@ typedef unsigned long  u_long;
 
 // 文字リテラルをutf-8に
 // FIXME:パス名に英数字以外を使うと読めない
-// #pragma execution_character_set("utf-8")
+//#pragma execution_character_set("utf-8")
 
 // TIPS:std::min std::maxを使うための定義
 #define NOMINMAX
@@ -46,8 +46,6 @@ typedef unsigned long  u_long;
 
 // GLEWのリンク形式
 #define GLEW_STATIC
-// FTGLのリンク形式を指定
-#define FTGL_LIBRARY_STATIC
 
 // windows.hからほとんど使われない定義を除外
 #define WIN32_LEAN_AND_MEAN
