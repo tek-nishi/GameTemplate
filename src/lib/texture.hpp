@@ -2,14 +2,15 @@
 
 //
 // テクスチャ管理
-// FIXME:OpenGLに依存している
 //
+// NOTICE:コピーしても、新たなリソースを確保しないようになっています
+// TODO:Textureの細かな設定
+// 
 
 #include "defines.hpp"
 #include "glTexture.hpp"
 #include <string>
 #include <memory>
-#include <GLFW/glfw3.h>
 
 
 class Texture {

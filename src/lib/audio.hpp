@@ -4,6 +4,9 @@
 //
 // OpenAL管理
 //
+// NOTICE:Mediaはコピーしても新たなリソース消費がない
+// 
+
 
 #include "defines.hpp"
 #include <string>

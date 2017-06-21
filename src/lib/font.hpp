@@ -3,6 +3,8 @@
 //
 // 文字表示
 //
+// FIXME:FONScontextがメモリリークしている
+//
 
 #include "defines.hpp"
 #include <fontstash.h>

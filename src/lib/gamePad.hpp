@@ -2,6 +2,9 @@
 
 //
 // Game Pad
+// 
+// initGamePad、updateGamePad、flushGamePad を使って実装してください。
+// 
 // FIXME:アプリ起動後の抜き差しには対応していません
 //
 
