@@ -1,6 +1,5 @@
 ﻿//
 // テクスチャ管理
-// FIXME:OpenGLに依存している
 //
 
 #include "texture.hpp"
@@ -51,7 +50,7 @@ void Texture::setupParam() {
   
 void Texture::setupImage(const std::string& filename) {
   Image obj(filename);
-  width_ = obj.width();
+  width_  = obj.width();
   height_ = obj.height();
   if ((width_ != int2pow(width_)) || (height_ != int2pow(height_))) {
     DOUT << "Texture size error " << width_ << ":" << height_ << std::endl;

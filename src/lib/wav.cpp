@@ -13,18 +13,19 @@
 Wav::Wav(const std::string& file) {
   std::ifstream fstr(file, std::ios::binary);
   if (!fstr) {
-    DOUT << "Can't open:" << file << std::endl;
+    DOUT << "Can't open: " << file << std::endl;
     throw;
   }
     
   // ファイル情報を解析
   if (!analyzeWavFile(info, fstr)) {
-    throw "This file isn't WAV.";
+    DOUT << "This file isn't WAV: " << file << std::endl;
+    throw;
   }
 
   if ((info.id != 1) || (info.bit != 16)) {
     // IDが１で量子化ビット数が16以外は扱わない
-    DOUT << "Wav format error. " << info.id << " " << info.bit << std::endl;
+    DOUT << "Wav format error. " << info.id << " " << info.bit << " : " << file << std::endl;
     throw;
   }
     

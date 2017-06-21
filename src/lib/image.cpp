@@ -11,6 +11,11 @@ Image::Image(const std::string& path) {
   int comp;
   unsigned char *data = stbi_load(path.c_str(), &width_, &height_, &comp, 0);
 
+  if (!data) {
+    DOUT << "Can't open: " << path << std::endl;
+    throw;
+  }
+  
   // comp  1 grey
   //       2 grey, alpha
   //       3 red, green, blue
