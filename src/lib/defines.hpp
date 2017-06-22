@@ -44,6 +44,11 @@ typedef unsigned long  u_long;
 #pragma warning (disable:4800)
 #pragma warning (disable:4996)
 
+#if !defined (DEBUG)
+// Degub版のみコンソールを表示する設定
+#pragma comment(linker, "/subsystem:windows /entry:mainCRTStartup")
+#endif
+
 // GLEWのリンク形式
 #define GLEW_STATIC
 
