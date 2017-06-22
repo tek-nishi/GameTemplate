@@ -27,8 +27,8 @@ public:
 
 
 class Os {
-	DbgStreambuf dbgStream_;
-	std::streambuf* stream_;
+	// DbgStreambuf dbgStream_;
+	// std::streambuf* stream_;
 
 	std::string resource_path_;
 	std::string document_path_;

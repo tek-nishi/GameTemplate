@@ -31,7 +31,8 @@ Os::Os() :
   _set_error_mode(_OUT_TO_MSGBOX);
 
   // デバッグコンソールにcoutできるようにする
-  stream_ = std::cout.rdbuf(&dbgStream_);
+  // NOTICE:コンソールアプリケーションに変更したので、この手続きは不要
+  // stream_ = std::cout.rdbuf(&dbgStream_);
 
   DOUT << "Os()" << std::endl;
 }
@@ -40,7 +41,7 @@ Os::~Os() {
   DOUT << "~Os()" << std::endl;
 
   // coutの挙動を元に戻す
-  std::cout.rdbuf(stream_);
+  // std::cout.rdbuf(stream_);
 }
 
 const std::string& Os::resourcePath() const { return resource_path_; }

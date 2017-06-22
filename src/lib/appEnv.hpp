@@ -55,7 +55,7 @@ enum class Screen {
 
 class AppEnv {
   // OS固有処理
-  //Os os_;
+  Os os_;
   
   // 描画ウィンドウ
   GlfwWindow window_;
