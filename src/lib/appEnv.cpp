@@ -138,6 +138,7 @@ void AppEnv::end() {
 // 入力(キー＆ボタン)の再初期化
 void AppEnv::flushInput() {
   switchInputBuffer();
+  flushGamePad(gamepads_);
 }
   
 // ウィンドウサイズを返す
