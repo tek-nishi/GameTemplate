@@ -42,20 +42,33 @@ int GamePad::axes() const { return axis_num_; }
 
 // 指定ボタンがPress状態か返す
 // index = ボタン番号
-bool GamePad::isPressButton(const int index) const {
+bool GamePad::isButtonPressing(const int index) const {
   return press_button_[index];
 }
 
 // 指定ボタンがPush状態か返す
 // index = ボタン番号
-bool GamePad::isPushButton(const int index) const {
+bool GamePad::isButtonPushed(const int index) const {
   return push_button_[index];
 }
 
 // 指定ボタンがPull状態か返す
 // index = ボタン番号
-bool GamePad::isPullButton(const int index) const {
+bool GamePad::isButtonReleased(const int index) const {
   return pull_button_[index];
+}
+
+// NOTICE:過去バージョンとの互換性維持用
+bool GamePad::isPressButton(const int index) const {
+  return isButtonPressing(index);
+}
+
+bool GamePad::isPushButton(const int index) const {
+  return isButtonPushed(index);
+}
+
+bool GamePad::isPullButton(const int index) const {
+  return isButtonReleased(index);
 }
 
 // 指定軸の倒れ具合を返す
@@ -99,21 +112,35 @@ bool GamePad::isEnableAxisButton() const {
 
 // 簡易ボタンがPress状態か返す
 // index = ボタン番号
-bool GamePad::isPressAxisButton(const int index) const {
+bool GamePad::isAxisButtonPressing(const int index) const {
   return press_axis_button_[index];
 }
 
 // 簡易ボタンがPush状態か返す
 // index = ボタン番号
-bool GamePad::isPushAxisButton(const int index) const {
+bool GamePad::isAxisButtonPushed(const int index) const {
   return push_axis_button_[index];
 }
 
 // 簡易ボタンがPull状態か返す
 // index = ボタン番号
-bool GamePad::isPullAxisButton(const int index) const {
+bool GamePad::isAxisButtonReleased(const int index) const {
   return pull_axis_button_[index];
 }
+
+// NOTICE:過去バージョンとの互換性維持用
+bool GamePad::isPressAxisButton(const int index) const {
+  return isAxisButtonPressing(index);
+}
+
+bool GamePad::isPushAxisButton(const int index) const {
+  return isAxisButtonPushed(index);
+}
+
+bool GamePad::isPullAxisButton(const int index) const {
+  return isAxisButtonReleased(index);
+}
+
 
 // GamePadが有効ならtrueを返す
 bool GamePad::isPresent() const {

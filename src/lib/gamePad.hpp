@@ -2,9 +2,6 @@
 
 //
 // Game Pad
-// 
-// initGamePad、updateGamePad、flushGamePad を使って実装してください。
-// 
 // FIXME:アプリ起動後の抜き差しには対応していません
 //
 
@@ -59,6 +56,11 @@ public:
   int axes() const;
 
   // ボタンの Press / Push / Pull の状況
+  bool isButtonPressing(const int index) const;
+  bool isButtonPushed(const int index) const;
+  bool isButtonReleased(const int index) const;
+  
+  // NOTICE:過去のバージョンとの互換性のために残してある
   bool isPressButton(const int index) const;
   bool isPushButton(const int index) const;
   bool isPullButton(const int index) const;
@@ -80,6 +82,11 @@ public:
   bool isEnableAxisButton() const;
   
   // 簡易ボタンの Press / Push / Pull の状況
+  bool isAxisButtonPressing(const int index) const;
+  bool isAxisButtonPushed(const int index) const;
+  bool isAxisButtonReleased(const int index) const;
+
+  // NOTICE:過去のバージョンとの互換性のために残してある
   bool isPressAxisButton(const int index) const;
   bool isPushAxisButton(const int index) const;
   bool isPullAxisButton(const int index) const;
