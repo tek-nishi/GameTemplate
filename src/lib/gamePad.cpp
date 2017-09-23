@@ -106,7 +106,7 @@ void GamePad::disableAxisButton() {
 }
 
 // 簡易ボタンが有効ならtrueを返す
-bool GamePad::isEnableAxisButton() const {
+bool GamePad::isAxisButtonEnable() const {
   return axis_button_;
 }
 

@@ -79,7 +79,7 @@ public:
   void disableAxisButton();
 
   // 簡易ボタンが有効ならtrueを返す
-  bool isEnableAxisButton() const;
+  bool isAxisButtonEnable() const;
   
   // 簡易ボタンの Press / Push / Pull の状況
   bool isAxisButtonPressing(const int index) const;
