@@ -38,6 +38,16 @@ void Texture::unbind() const {
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+// フィルタリングのON/OFF
+void Texture::enableFilter(bool filtering) {
+  gl_texture_->bind();
+
+  GLint setting = filtering ? GL_LINEAR
+                            : GL_NEAREST;
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, setting);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, setting);
+}
 
 // テクスチャの基本的なパラメーター設定を行う
 void Texture::setupParam() {

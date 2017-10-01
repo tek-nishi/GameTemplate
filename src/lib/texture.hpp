@@ -35,6 +35,10 @@ public:
   // 拘束を解除
 	void unbind() const;
 
+  // 画素のフィルタリングを有効にする
+  // TIPS:無効にすると拡大時にぼんやりした絵にならない
+  void enableFilter(bool filtering);
+
 
 private:
   // テクスチャの基本的なパラメーター設定を行う
