@@ -39,6 +39,10 @@ public:
   // TIPS:無効にすると拡大時にぼんやりした絵にならない
   void enableFilter(bool filtering);
 
+  // 縦横の画像の繰り返しを変更する
+  // true 繰り返しON
+  void repeat(bool x, bool y); 
+
 
 private:
   // テクスチャの基本的なパラメーター設定を行う

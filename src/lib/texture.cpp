@@ -49,6 +49,17 @@ void Texture::enableFilter(bool filtering) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, setting);
 }
 
+// 縦横のリピートを決める
+void Texture::repeat(bool x, bool y) {
+  GLint x_repeat = x ? GL_REPEAT : GL_CLAMP_TO_EDGE;
+  GLint y_repeat = y ? GL_REPEAT : GL_CLAMP_TO_EDGE;
+  
+  gl_texture_->bind();
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, x_repeat);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, y_repeat);
+}
+
+
 // テクスチャの基本的なパラメーター設定を行う
 void Texture::setupParam() {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
