@@ -8,10 +8,13 @@
 #include "defines.hpp"
 #include <GLFW/glfw3.h>
 #include <vector>
+#include <string>
 
 
 class GamePad {
   int id_;
+  std::string name_;
+
 
   // ボタン数と軸数
   int button_num_;

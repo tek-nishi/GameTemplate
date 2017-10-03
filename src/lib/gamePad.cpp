@@ -10,6 +10,7 @@
 
 GamePad::GamePad(const int id) :
   id_(id),
+  name_(glfwGetJoystickName(id)),
   axis_button_(false),
   press_axis_button_(AXIS_BUTTON_NUM),
   push_axis_button_(AXIS_BUTTON_NUM),
@@ -18,7 +19,11 @@ GamePad::GamePad(const int id) :
   glfwGetJoystickButtons(id_, &button_num_);
   glfwGetJoystickAxes(id_, &axis_num_);
 
-  DOUT << "GamePad: id:" << id_ << " button:" << button_num_ << " axis:" << axis_num_ << std::endl;
+  DOUT << "GamePad: id:" << id_
+       << " name:"       << name_
+       << " button:"     << button_num_
+       << " axis:"       << axis_num_
+       << std::endl;
 
   // ボタンの数に応じた変数の初期化
   press_button_.resize(button_num_);
