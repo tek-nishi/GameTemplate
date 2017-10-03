@@ -39,6 +39,10 @@ GamePad::GamePad(const int id) :
   std::fill(std::begin(axis_value_), std::end(axis_value_), 0.0f);
 }
 
+
+// GamePad名
+const std::string& GamePad::name() const { return name_; }
+
 // ボタン数を返す
 int GamePad::buttons() const { return button_num_; }
 

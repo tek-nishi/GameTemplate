@@ -54,6 +54,9 @@ public:
   
   explicit GamePad(const int id);
 
+  // GamePad名
+  const std::string& name() const;
+
   // GamePadのボタン数と軸数
   int buttons() const;
   int axes() const;
