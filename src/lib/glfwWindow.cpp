@@ -1,4 +1,4 @@
-//
+﻿//
 // GLFWのWindow管理
 //
 
@@ -32,7 +32,6 @@ GlfwWindow::GlfwWindow(const int width, const int height,
 
   // TIPS:gladの初期化はglfwMakeContextCurrentの後で
   if (gladLoadGL() == 0) throw "Can't use OpenGL extensions.";
-
 }
 
 GlfwWindow::~GlfwWindow() {

@@ -7,7 +7,6 @@
 
 #include "defines.hpp"
 #include <Eigen/Geometry>
-#include <GLFW/glfw3.h>
 
 
 typedef Eigen::Matrix<GLint, 2, 1>	 Vec2i;

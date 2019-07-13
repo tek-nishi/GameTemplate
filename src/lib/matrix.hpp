@@ -8,7 +8,6 @@
 #include "defines.hpp"
 #include <utility>
 #include <Eigen/Geometry>
-#include <GLFW/glfw3.h>
 #include "vector.hpp"
 
 

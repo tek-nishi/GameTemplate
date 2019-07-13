@@ -43,7 +43,7 @@
     <ClCompile Include="src\lib\fileUtil.cpp" />
     <ClCompile Include="src\lib\font.cpp" />
     <ClCompile Include="src\lib\gamePad.cpp" />
-    <ClCompile Include="src\lib\glExt.cpp" />
+    <ClCompile Include="src\lib\glad.c" />
     <ClCompile Include="src\lib\glfwWindow.cpp" />
     <ClCompile Include="src\lib\glTexture.cpp" />
     <ClCompile Include="src\lib\graph.cpp" />
@@ -112,7 +112,6 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,7 +129,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

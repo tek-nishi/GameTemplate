@@ -53,3 +53,6 @@ typedef unsigned long  u_long;
 #include <windows.h>
 
 #endif
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>

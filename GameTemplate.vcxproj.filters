@@ -101,9 +101,6 @@
     <ClCompile Include="src\lib\gamePad.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib\glExt.cpp">
-      <Filter>Lib</Filter>
-    </ClCompile>
     <ClCompile Include="src\lib\glfwWindow.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
@@ -142,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\lib\image.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glad.c">
       <Filter>Lib</Filter>
     </ClCompile>
   </ItemGroup>

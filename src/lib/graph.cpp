@@ -4,7 +4,6 @@
 
 #include "graph.hpp"
 #include <vector>
-#include <GLFW/glfw3.h>
 #include "matrix.hpp"
 
 

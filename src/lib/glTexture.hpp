@@ -5,7 +5,6 @@
 //
 
 #include "defines.hpp"
-#include <GLFW/glfw3.h>
 
 class GlTexture {
 	GLuint id_;
