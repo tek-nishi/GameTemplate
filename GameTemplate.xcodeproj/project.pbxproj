@@ -11,6 +11,7 @@
 		47120CB91A7CB0ED004263FC /* streamWav.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47120CB71A7CB0ED004263FC /* streamWav.cpp */; };
 		472C852518751939005FA3E9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 472C852418751939005FA3E9 /* main.cpp */; };
 		47648CB21A3A8CB100E61146 /* gamePad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47648CB11A3A8CB100E61146 /* gamePad.cpp */; };
+		476D14CC22D9A60B008D6C6C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 476D14CB22D9A60B008D6C6C /* glad.c */; };
 		477581741E6EA7AC00BA3B85 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 477581731E6EA7AC00BA3B85 /* image.cpp */; };
 		4782F1E31A328F0400D34566 /* font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4782F1E21A328F0400D34566 /* font.cpp */; };
 		47A026CA198939ED003F5E5B /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026C9198939ED003F5E5B /* utils.cpp */; };
@@ -22,7 +23,6 @@
 		47A026D8198947B8003F5E5B /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D7198947B8003F5E5B /* matrix.cpp */; };
 		47A026DA1989493B003F5E5B /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026D91989493B003F5E5B /* graph.cpp */; };
 		47A026DC19894A61003F5E5B /* glfwWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026DB19894A61003F5E5B /* glfwWindow.cpp */; };
-		47A026DE19894B87003F5E5B /* glExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026DD19894B87003F5E5B /* glExt.cpp */; };
 		47A026E019894C25003F5E5B /* camera2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026DF19894C25003F5E5B /* camera2D.cpp */; };
 		47A026E219894E3C003F5E5B /* audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026E119894E3C003F5E5B /* audio.cpp */; };
 		47A026E4198950B2003F5E5B /* appEnv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47A026E3198950B2003F5E5B /* appEnv.cpp */; };
@@ -42,6 +42,7 @@
 		472C852418751939005FA3E9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		472C852618751950005FA3E9 /* GameTemplate-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GameTemplate-Info.plist"; path = "OSX/GameTemplate-Info.plist"; sourceTree = "<group>"; };
 		47648CB11A3A8CB100E61146 /* gamePad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamePad.cpp; path = src/lib/gamePad.cpp; sourceTree = "<group>"; };
+		476D14CB22D9A60B008D6C6C /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glad.c; path = src/lib/glad.c; sourceTree = "<group>"; };
 		477581731E6EA7AC00BA3B85 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = src/lib/image.cpp; sourceTree = "<group>"; };
 		4782F1E21A328F0400D34566 /* font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = font.cpp; path = src/lib/font.cpp; sourceTree = "<group>"; };
 		47A026C9198939ED003F5E5B /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = src/lib/utils.cpp; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		47A026D7198947B8003F5E5B /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = matrix.cpp; path = src/lib/matrix.cpp; sourceTree = "<group>"; };
 		47A026D91989493B003F5E5B /* graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graph.cpp; path = src/lib/graph.cpp; sourceTree = "<group>"; };
 		47A026DB19894A61003F5E5B /* glfwWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glfwWindow.cpp; path = src/lib/glfwWindow.cpp; sourceTree = "<group>"; };
-		47A026DD19894B87003F5E5B /* glExt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = glExt.cpp; path = src/lib/glExt.cpp; sourceTree = "<group>"; };
 		47A026DF19894C25003F5E5B /* camera2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camera2D.cpp; path = src/lib/camera2D.cpp; sourceTree = "<group>"; };
 		47A026E119894E3C003F5E5B /* audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = audio.cpp; path = src/lib/audio.cpp; sourceTree = "<group>"; };
 		47A026E3198950B2003F5E5B /* appEnv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = appEnv.cpp; path = src/lib/appEnv.cpp; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		47A026C8198939DC003F5E5B /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				476D14CB22D9A60B008D6C6C /* glad.c */,
 				477581731E6EA7AC00BA3B85 /* image.cpp */,
 				47120CB61A7CB0ED004263FC /* streaming.cpp */,
 				47120CB71A7CB0ED004263FC /* streamWav.cpp */,
@@ -96,7 +97,6 @@
 				47648CB11A3A8CB100E61146 /* gamePad.cpp */,
 				47A026E119894E3C003F5E5B /* audio.cpp */,
 				47A026DF19894C25003F5E5B /* camera2D.cpp */,
-				47A026DD19894B87003F5E5B /* glExt.cpp */,
 				47A026DB19894A61003F5E5B /* glfwWindow.cpp */,
 				47A026D91989493B003F5E5B /* graph.cpp */,
 				47A026D7198947B8003F5E5B /* matrix.cpp */,
@@ -186,6 +186,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -226,11 +227,11 @@
 				477581741E6EA7AC00BA3B85 /* image.cpp in Sources */,
 				47A026CE19893E11003F5E5B /* wav.cpp in Sources */,
 				47A026CA198939ED003F5E5B /* utils.cpp in Sources */,
-				47A026DE19894B87003F5E5B /* glExt.cpp in Sources */,
 				47120CB81A7CB0ED004263FC /* streaming.cpp in Sources */,
 				4782F1E31A328F0400D34566 /* font.cpp in Sources */,
 				47A026D8198947B8003F5E5B /* matrix.cpp in Sources */,
 				47A026DC19894A61003F5E5B /* glfwWindow.cpp in Sources */,
+				476D14CC22D9A60B008D6C6C /* glad.c in Sources */,
 				47A026D6198942F3003F5E5B /* os_osx.cpp in Sources */,
 				47A026D019893F80003F5E5B /* texture.cpp in Sources */,
 				47A026E4198950B2003F5E5B /* appEnv.cpp in Sources */,
@@ -266,6 +267,7 @@
 					"$(inherited)",
 					"SRCROOT=\"$(SRCROOT)/\"",
 					"PRODUCT_NAME=\"$(PRODUCT_NAME)\"",
+					GL_SILENCE_DEPRECATION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -304,7 +306,10 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCT_NAME=\"$(PRODUCT_NAME)\"";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRODUCT_NAME=\"$(PRODUCT_NAME)\"",
+					GL_SILENCE_DEPRECATION,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

@@ -1,19 +1,14 @@
-﻿//
+//
 // GLFWのWindow管理
 //
 
 #include "glfwWindow.hpp"
-#include "glExt.hpp"
 #include <iostream>
 
 
 // リンクするライブラリの指示(Windows)
 #if defined (_MSC_VER)
-#ifdef DEBUG
-#pragma comment(lib, "glfw3d.lib")
-#else
-#pragma comment(lib, "glfw3.lib")
-#endif
+#pragma comment(lib, "glfw3dll.lib")
 #pragma comment(lib, "opengl32.lib")
 #endif
 
@@ -24,7 +19,8 @@ GlfwWindow::GlfwWindow(const int width, const int height,
 
   if (!glfwInit()) throw "Can't Initialize GLFW.";
 
-  if (!is_visible) glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+  if (!is_visible) glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+  glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_FALSE);
 
   window_ = glfwCreateWindow(width, height, PREPRO_TO_STR(PRODUCT_NAME),
                              is_fullscreen ? glfwGetPrimaryMonitor() : nullptr, nullptr);
@@ -34,8 +30,9 @@ GlfwWindow::GlfwWindow(const int width, const int height,
   glfwMakeContextCurrent(window_);
   glfwSwapInterval(1);
 
-  // TIPS:GLEWの初期化はglfwMakeContextCurrentの後で
-  if (!initGlExt()) throw "Can't use OpenGL extensions.";
+  // TIPS:gladの初期化はglfwMakeContextCurrentの後で
+  if (gladLoadGL() == 0) throw "Can't use OpenGL extensions.";
+
 }
 
 GlfwWindow::~GlfwWindow() {

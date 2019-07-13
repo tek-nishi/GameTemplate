@@ -44,13 +44,13 @@ AppEnv::AppEnv(const int width, const int height,
 
   // フォーカス
   glfwSetWindowFocusCallback(window_(), focusCallback);
-  
+
   // GamePad
   gamepads_ = initGamePad();
   
   glEnable(GL_POINT_SMOOTH);
   glEnable(GL_LINE_SMOOTH);
-  
+
   // Windowの表示開始
   glfwShowWindow(window_());
 

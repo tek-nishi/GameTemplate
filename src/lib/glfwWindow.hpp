@@ -5,10 +5,7 @@
 //
 
 #include "defines.hpp"
-#if defined (_MSC_VER)
-// 先にglewをインクルードする必要がある
-#include <GL/glew.h>
-#endif
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 

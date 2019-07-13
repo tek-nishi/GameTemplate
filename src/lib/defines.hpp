@@ -20,10 +20,6 @@ typedef unsigned char  u_char;
 typedef unsigned int   u_int;
 typedef unsigned long  u_long;
 
-// GLFWでglu.hとglext.hをインクルードするよう指示
-#define GLFW_INCLUDE_GLU
-#define GLFW_INCLUDE_GLEXT
-
 
 // Windows特有の定義
 #if defined (_MSC_VER)
@@ -49,8 +45,8 @@ typedef unsigned long  u_long;
 #pragma comment(linker, "/subsystem:windows /entry:mainCRTStartup")
 #endif
 
-// GLEWのリンク形式
-#define GLEW_STATIC
+// GLFWのリンク形式
+#define GLFW_DLL
 
 // windows.hからほとんど使われない定義を除外
 #define WIN32_LEAN_AND_MEAN
