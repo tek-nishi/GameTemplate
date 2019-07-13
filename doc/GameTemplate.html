@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GameTemplateの使い方</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">GameTemplateの使い方</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org033e995">1. これは何</a></li>
+<li><a href="#org2703a36">2. 開発ツールの導入</a>
+<ul>
+<li><a href="#orgb645d1d">2.1. macOSの場合</a></li>
+<li><a href="#orgb2a8d37">2.2. Windowsの場合</a></li>
+</ul>
+</li>
+<li><a href="#org59ef2e6">3. 作業の始め方</a></li>
+<li><a href="#org98ae1b3">4. プログラムのビルドと実行</a></li>
+<li><a href="#orgb1b0927">5. 図形の描画</a>
+<ul>
+<li><a href="#orgce1e4a1">5.1. 点</a></li>
+<li><a href="#org4f248cb">5.2. 線分</a></li>
+<li><a href="#org42d13ef">5.3. 長方形</a></li>
+<li><a href="#org0b948ec">5.4. 円</a></li>
+<li><a href="#orgeea606c">5.5. 円弧</a></li>
+<li><a href="#org62c2b0e">5.6. 三角形</a></li>
+<li><a href="#orgfd32bc4">5.7. 四角形</a></li>
+</ul>
+</li>
+<li><a href="#orgb77784c">6. キーとマウス</a>
+<ul>
+<li><a href="#org9da9dd8">6.1. キー入力</a></li>
+<li><a href="#org73cd15d">6.2. マウスボタン入力</a></li>
+<li><a href="#orge82a54f">6.3. マウスカーソル</a></li>
+</ul>
+</li>
+<li><a href="#org82b9f87">7. 乱数</a></li>
+<li><a href="#orgd736025">8. 画像</a></li>
+<li><a href="#org254d265">9. サウンド</a></li>
+<li><a href="#org0424ff4">10. ゲームパッド</a></li>
+<li><a href="#org7635cef">11. 文字表示</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org033e995" class="outline-2">
+<h2 id="org033e995"><span class="section-number-2">1</span> これは何</h2>
+<div class="outline-text-2" id="text-1">
+
+<div class="figure">
+<p><img src="images/photo7.png" alt="photo7.png" />
+</p>
+<p><span class="figure-number">&#22259;1:  </span>GameTemplateでの作例</p>
+</div>
+
+<p>
+GameTemplateは、ゲーム製作を学ぶために用意されたフレームワーク(雛形)です。
+</p>
+
+<ul class="org-ul">
+<li><b>Windows と macOS どちらでも利用できます</b></li>
+
+<li><b>用意されている機能は以下の通り</b>
+
+<ul class="org-ul">
+<li>簡単な図形を描画する</li>
+
+<li>画像を読み込んで描画する</li>
+
+<li>音のファイルを読み込んで再生する</li>
+
+<li>キー入力・マウス入力を調べる</li>
+
+<li>乱数を使う</li>
+</ul></li>
+</ul>
+
+<p>
+Githubにて <a href="https://github.com/ssa-study/GameTemplate">最新版を公開</a> しています。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2703a36" class="outline-2">
+<h2 id="org2703a36"><span class="section-number-2">2</span> 開発ツールの導入</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgb645d1d" class="outline-3">
+<h3 id="orgb645d1d"><span class="section-number-3">2.1</span> macOSの場合</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+App Store から Xcode をダウンロード
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb2a8d37" class="outline-3">
+<h3 id="orgb2a8d37"><span class="section-number-3">2.2</span> Windowsの場合</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li><a href="https://www.visualstudio.com/ja/">公式サイト</a> から <b>Visual Studio Community 2017</b> のインストーラーをダウンロード</li>
+
+<li>ダウンロードしたインストーラー(vs_Community.exe)を実行</li>
+
+<li><p>
+「C++によるゲーム開発」にチェックを入れる
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo9.png" alt="photo9.png" />
+</p>
+</div></li>
+
+<li><p>
+右側「概要」の「C++によるゲーム開発」の中の「Windows8 SDKとUCRT SDK」という項目にチェックを入れる
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo10.png" alt="photo10.png" />
+</p>
+</div></li>
+
+<li>インストール！</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59ef2e6" class="outline-2">
+<h2 id="org59ef2e6"><span class="section-number-2">3</span> 作業の始め方</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li><p>
+GameTemplateフォルダの複製を作る
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo1.png" alt="photo1.png" />
+</p>
+</div></li>
+
+<li><p>
+複製したフォルダの名前を変える
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo2.png" alt="photo2.png" />
+</p>
+</div></li>
+
+<li><p>
+複製したフォルダの中へ移動
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo3.png" alt="photo3.png" />
+</p>
+</div></li>
+
+<li>GameTemplate.slnを開く</li>
+
+<li><p>
+ソリューションエクスプローラーからプロジェクトGameTemplateを開く
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo4.png" alt="photo4.png" />
+</p>
+</div></li>
+
+<li><p>
+main.cppをダブルクリックするとテキストエディタにファイルの内容が表示される
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo8.png" alt="photo8.png" />
+</p>
+</div></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org98ae1b3" class="outline-2">
+<h2 id="org98ae1b3"><span class="section-number-2">4</span> プログラムのビルドと実行</h2>
+<div class="outline-text-2" id="text-4">
+<ol class="org-ol">
+<li>「ビルド→ソリューションのビルド」</li>
+<li><p>
+ビルドが完了したら「デバッグ→デバッグの開始」
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo5.png" alt="photo5.png" />
+</p>
+<p><span class="figure-number">&#22259;9:  </span>ビルドが完了すると出力に「1 正常終了」と出る</p>
+</div></li>
+</ol>
+
+
+<ul class="org-ul">
+<li><p>
+<b>慣れてきたら</b>
+</p>
+
+<p>
+このボタンを押すと、必要な時だけビルドしてからプログラムを実行してくれます
+</p>
+
+
+<div class="figure">
+<p><img src="images/photo6.png" alt="photo6.png" />
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgb1b0927" class="outline-2">
+<h2 id="orgb1b0927"><span class="section-number-2">5</span> 図形の描画</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgce1e4a1" class="outline-3">
+<h3 id="orgce1e4a1"><span class="section-number-3">5.1</span> 点</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-c++">drawPoint(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,              <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20301;&#32622;(x, y)</span>
+          <span style="color: #1C00CF;">5</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#28857;&#12398;&#22823;&#12365;&#12373;</span>
+          Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>));   <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f248cb" class="outline-3">
+<h3 id="org4f248cb"><span class="section-number-3">5.2</span> 線分</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-c++">    
+drawLine(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,              <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#22987;&#28857;(x, y)</span>
+         <span style="color: #1C00CF;">100</span>, <span style="color: #1C00CF;">100</span>,          <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32066;&#28857;(x, y)</span>
+         <span style="color: #1C00CF;">2</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+         Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">1</span>));   <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org42d13ef" class="outline-3">
+<h3 id="org42d13ef"><span class="section-number-3">5.3</span> 長方形</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-c++">drawBox(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20301;&#32622;(x, y)</span>
+        <span style="color: #1C00CF;">80</span>, <span style="color: #1C00CF;">120</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#24133;&#12289;&#39640;&#12373;</span>
+        <span style="color: #1C00CF;">1</span>,                  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+        Color(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++">drawFillBox(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20301;&#32622;(x, y)</span>
+            <span style="color: #1C00CF;">80</span>, <span style="color: #1C00CF;">120</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#24133;&#12289;&#39640;&#12373;</span>
+            Color(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b948ec" class="outline-3">
+<h3 id="org0b948ec"><span class="section-number-3">5.4</span> 円</h3>
+<div class="outline-text-3" id="text-5-4">
+<div class="org-src-container">
+<pre class="src src-c++">drawCircle(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20013;&#24515;&#20301;&#32622;(x, y)</span>
+           <span style="color: #1C00CF;">60</span>, <span style="color: #1C00CF;">80</span>,             <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#27178;&#21322;&#24452;&#12289;&#32294;&#21322;&#24452;</span>
+           <span style="color: #1C00CF;">20</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20998;&#21106;&#25968;</span>
+           <span style="color: #1C00CF;">1</span>,                  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+           Color(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">1</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++">drawFillCircle(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20013;&#24515;&#20301;&#32622;(x, y)</span>
+               <span style="color: #1C00CF;">60</span>, <span style="color: #1C00CF;">80</span>,             <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#27178;&#21322;&#24452;&#12289;&#32294;&#21322;&#24452;</span>
+               <span style="color: #1C00CF;">20</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20998;&#21106;&#25968;</span>
+               Color(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">1</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeea606c" class="outline-3">
+<h3 id="orgeea606c"><span class="section-number-3">5.5</span> 円弧</h3>
+<div class="outline-text-3" id="text-5-5">
+<div class="org-src-container">
+<pre class="src src-c++">drawArc(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20013;&#24515;&#20301;&#32622;</span>
+        <span style="color: #1C00CF;">120</span>, <span style="color: #1C00CF;">100</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#27178;&#21322;&#24452;&#12289;&#32294;&#21322;&#24452;</span>
+        <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">3.14</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38283;&#22987;&#12289;&#32066;&#20102;&#35282;&#24230;(&#21336;&#20301;:&#12521;&#12472;&#12450;&#12531;)</span>
+        <span style="color: #1C00CF;">20</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20998;&#21106;&#25968;</span>
+        <span style="color: #1C00CF;">1</span>,                  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+        Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++">drawFillArc(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,               <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20013;&#24515;&#20301;&#32622;</span>
+            <span style="color: #1C00CF;">120</span>, <span style="color: #1C00CF;">100</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#27178;&#21322;&#24452;&#12289;&#32294;&#21322;&#24452;</span>
+            <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">3.14</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38283;&#22987;&#12289;&#32066;&#20102;&#35282;&#24230;(&#21336;&#20301;:&#12521;&#12472;&#12450;&#12531;)</span>
+            <span style="color: #1C00CF;">20</span>,                 <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20998;&#21106;&#25968;</span>
+            Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org62c2b0e" class="outline-3">
+<h3 id="org62c2b0e"><span class="section-number-3">5.6</span> 三角形</h3>
+<div class="outline-text-3" id="text-5-6">
+<div class="org-src-container">
+<pre class="src src-c++">drawTriangle(-<span style="color: #1C00CF;">60</span>, <span style="color: #1C00CF;">0</span>,             <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65297;(x, y)</span>
+             <span style="color: #1C00CF;">100</span>, <span style="color: #1C00CF;">80</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65298;(x, y)</span>
+             -<span style="color: #1C00CF;">60</span>, -<span style="color: #1C00CF;">90</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65299;(x, y)</span>
+             <span style="color: #1C00CF;">1</span>,                  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+             Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++">drawFillTriangle(-<span style="color: #1C00CF;">60</span>, <span style="color: #1C00CF;">0</span>,             <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65297;(x, y)</span>
+                 <span style="color: #1C00CF;">100</span>, <span style="color: #1C00CF;">80</span>,            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65298;(x, y)</span>
+                 -<span style="color: #1C00CF;">60</span>, -<span style="color: #1C00CF;">90</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65299;(x, y)</span>
+                 Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+    
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd32bc4" class="outline-3">
+<h3 id="orgfd32bc4"><span class="section-number-3">5.7</span> 四角形</h3>
+<div class="outline-text-3" id="text-5-7">
+<div class="org-src-container">
+<pre class="src src-c++">    
+drawQuad(-<span style="color: #1C00CF;">100</span>, -<span style="color: #1C00CF;">100</span>,         <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65297;(x, y)</span>
+         <span style="color: #1C00CF;">100</span>, -<span style="color: #1C00CF;">80</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65298;(x, y)</span>
+         <span style="color: #1C00CF;">120</span>, <span style="color: #1C00CF;">100</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65299;(x, y)</span>
+         -<span style="color: #1C00CF;">150</span>, <span style="color: #1C00CF;">200</span>,          <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65300;(x, y)</span>
+         <span style="color: #1C00CF;">1</span>,                  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#32218;&#12398;&#22826;&#12373;</span>
+         Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++">    
+drawFillQuad(-<span style="color: #1C00CF;">100</span>, -<span style="color: #1C00CF;">100</span>,         <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65297;(x, y)</span>
+             <span style="color: #1C00CF;">100</span>, -<span style="color: #1C00CF;">80</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65298;(x, y)</span>
+             <span style="color: #1C00CF;">120</span>, <span style="color: #1C00CF;">100</span>,           <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65299;(x, y)</span>
+             -<span style="color: #1C00CF;">150</span>, <span style="color: #1C00CF;">200</span>,          <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38914;&#28857;&#65300;(x, y)</span>
+             Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>));    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#33394;(&#36196;, &#32209;, &#38738;)</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb77784c" class="outline-2">
+<h2 id="orgb77784c"><span class="section-number-2">6</span> キーとマウス</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org9da9dd8" class="outline-3">
+<h3 id="org9da9dd8"><span class="section-number-3">6.1</span> キー入力</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #AA0D91;">if</span> (env.isKeyPushed(<span style="color: #2d9574;">'A'</span>)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">A&#12461;&#12540;&#12434;&#25276;&#12375;&#12383;&#30636;&#38291;&#12394;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+
+<span style="color: #AA0D91;">if</span> (env.isKeyPressing(<span style="color: #2d9574;">'A'</span>)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">A&#12461;&#12540;&#12364;&#25276;&#12373;&#12428;&#12390;&#12356;&#12383;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+
+<span style="color: #AA0D91;">if</span> (env.isKeyReleased(<span style="color: #2d9574;">' '</span>)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12473;&#12506;&#12540;&#12473;&#12461;&#12540;&#12364;&#38626;&#12373;&#12428;&#12383;&#30636;&#38291;&#12394;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+
+
+<span style="color: #AA0D91;">if</span> (env.isKeyPushed(KEY_LEFT)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30690;&#21360;&#12461;&#12540;&#12398;&#12300;&#24038;&#12301;&#12434;&#25276;&#12375;&#12383;&#30636;&#38291;&#12394;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+  
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">&#34920;1:</span> 文字が入力できないキーの一覧</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">KEY_ESC</td>
+<td class="org-left">ESCキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_ENTER</td>
+<td class="org-left">Enterキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_TAB</td>
+<td class="org-left">TABキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_RIGHT</td>
+<td class="org-left">右矢印キー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_LEFT</td>
+<td class="org-left">左矢印キー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_DOWN</td>
+<td class="org-left">下矢印キー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_UP</td>
+<td class="org-left">上矢印キー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_LEFT_SHIFT</td>
+<td class="org-left">左Shiftキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_RIGHT_SHIFT</td>
+<td class="org-left">右Shiftキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_LEFT_CONTROL</td>
+<td class="org-left">左Ctrlキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_RIGHT_CONTROL</td>
+<td class="org-left">右Ctrlキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_LEFT_ALT</td>
+<td class="org-left">左Altキー</td>
+</tr>
+
+<tr>
+<td class="org-left">KEY_RIGHT_ALT</td>
+<td class="org-left">右Altキー</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org73cd15d" class="outline-3">
+<h3 id="org73cd15d"><span class="section-number-3">6.2</span> マウスボタン入力</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #AA0D91;">if</span> (env.isButtonPushed(<span style="color: #1C00CF;">Mouse</span>::LEFT)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12398;&#24038;&#12508;&#12479;&#12531;&#12434;&#25276;&#12375;&#12383;&#30636;&#38291;&#12394;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+
+<span style="color: #AA0D91;">if</span> (env.isButtonPressing(<span style="color: #1C00CF;">Mouse</span>::RIGHT)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12398;&#21491;&#12508;&#12479;&#12531;&#12364;&#25276;&#12373;&#12428;&#12390;&#12356;&#12383;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+
+<span style="color: #AA0D91;">if</span> (env.isButtonReleased(<span style="color: #1C00CF;">Mouse</span>::LEFT)) {
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12398;&#24038;&#12508;&#12479;&#12531;&#12364;&#38626;&#12373;&#12428;&#12383;&#30636;&#38291;&#12394;&#12425;&#12371;&#12371;&#12395;&#21046;&#24481;&#12364;&#31227;&#12427;</span>
+}
+    
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge82a54f" class="outline-3">
+<h3 id="orge82a54f"><span class="section-number-3">6.3</span> マウスカーソル</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12398;&#12459;&#12540;&#12477;&#12523;&#20301;&#32622;&#12434;&#22793;&#25968;&#12395;&#12467;&#12500;&#12540;</span>
+<span style="color: #ba2f59;">Vec2f</span> <span style="color: #715ab1;">pos</span> = env.mousePosition();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12398;&#12459;&#12540;&#12477;&#12523;&#20301;&#32622;&#12434;&#32066;&#28857;&#12395;&#12375;&#12390;&#32218;&#12434;&#24341;&#12367;</span>
+drawLine(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>, pos.x(), pos.y(), <span style="color: #1C00CF;">1</span>, Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>));
+    
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12459;&#12540;&#12477;&#12523;&#20301;&#32622;&#12434;(0, 0)&#12408;&#31227;&#21205;</span>
+env.mousePosition(Vec2f(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>));    
+    
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12459;&#12540;&#12477;&#12523;OFF</span>
+env.mouseCursor(<span style="color: #1C00CF;">false</span>);    
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12510;&#12454;&#12473;&#12459;&#12540;&#12477;&#12523;ON</span>
+env.mouseCursor(<span style="color: #1C00CF;">true</span>);    
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82b9f87" class="outline-2">
+<h2 id="org82b9f87"><span class="section-number-2">7</span> 乱数</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20081;&#25968;&#12434;&#20316;&#12427;&#22793;&#25968;&#12434;&#29992;&#24847;  </span>
+<span style="color: #ba2f59;">Random</span> <span style="color: #715ab1;">dice</span>;
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">0~9&#12398;&#12393;&#12428;&#12363;&#12398;&#25972;&#25968;&#12434;&#21462;&#24471;</span>
+<span style="color: #ba2f59;">int</span> <span style="color: #715ab1;">a</span> = dice(<span style="color: #1C00CF;">10</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">-2~8&#12398;&#12393;&#12428;&#12363;&#12398;&#25972;&#25968;&#12434;&#21462;&#24471;</span>
+<span style="color: #ba2f59;">int</span> <span style="color: #715ab1;">b</span> = dice(-<span style="color: #1C00CF;">2</span>, <span style="color: #1C00CF;">8</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">0.0f~1.0f&#12398;&#12393;&#12428;&#12363;&#12398;&#23567;&#25968;&#12434;&#21462;&#24471;</span>
+<span style="color: #ba2f59;">float</span> <span style="color: #715ab1;">c</span> = dice();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">2.0f~5.0f&#12398;&#12393;&#12428;&#12363;&#12398;&#23567;&#25968;&#12434;&#21462;&#24471;</span>
+<span style="color: #ba2f59;">float</span> <span style="color: #715ab1;">d</span> = dice(<span style="color: #1C00CF;">2.0f</span>, <span style="color: #1C00CF;">5.0f</span>);
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd736025" class="outline-2">
+<h2 id="orgd736025"><span class="section-number-2">8</span> 画像</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>JPEG、PNG、BMP、GIF形式の画像が使えます</li>
+
+<li>画像の幅と高さは、どちらも２のべき乗である必要があります
+
+<ul class="org-ul">
+<li>幅16ピクセル・高さ32ピクセル や 幅128ピクセル・高さ512ピクセル など</li>
+
+<li>最大2048ピクセルまで</li>
+</ul></li>
+
+<li>画像ファイルをresフォルダ以下に置く</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#12434;&#12501;&#12449;&#12452;&#12523;&#12363;&#12425;&#35501;&#12415;&#36796;&#12416;  </span>
+<span style="color: #ba2f59;">Texture</span> <span style="color: #715ab1;">image</span>(<span style="color: #2d9574;">"res/hoge.png"</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#12398;&#25313;&#22823;&#32302;&#23567;&#26178;&#12398;&#12501;&#12451;&#12523;&#12479;&#12522;&#12531;&#12464;&#12434;&#22793;&#26356;</span>
+<span style="color: #2aa1ae;">//   </span><span style="color: #2aa1ae;">false&#12391;&#28961;&#21177;&#12289;true&#12391;&#26377;&#21177;</span>
+image.enableFilter(<span style="color: #1C00CF;">false</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#12398;&#32294;&#27178;&#12398;&#32368;&#12426;&#36820;&#12375;&#12434;&#22793;&#26356;</span>
+<span style="color: #2aa1ae;">//  </span><span style="color: #2aa1ae;">&#27178;&#26041;&#21521;&#12289;&#32294;&#26041;&#21521;&#12434;&#20491;&#21029;&#12395;&#25351;&#23450;</span>
+image.repeat(<span style="color: #1C00CF;">false</span>, <span style="color: #1C00CF;">false</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#12434;&#25551;&#30011;</span>
+drawTextureBox(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,         <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#20301;&#32622;(x, y)</span>
+               <span style="color: #1C00CF;">256</span>, <span style="color: #1C00CF;">512</span>,     <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#24133;&#12539;&#39640;&#12373;</span>
+               <span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>,         <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#20999;&#12426;&#25244;&#12365;&#20301;&#32622;(x, y)</span>
+               <span style="color: #1C00CF;">128</span>, <span style="color: #1C00CF;">256</span>,     <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;&#20999;&#12426;&#25244;&#12365;&#24133;&#12539;&#39640;&#12373;</span>
+               image);       <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#20687;</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org254d265" class="outline-2">
+<h2 id="org254d265"><span class="section-number-2">9</span> サウンド</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>WAV形式のサウンドが使えます</li>
+
+<li>量子化ビット数16である必要があります</li>
+
+<li>サウンドファイルをresフォルダ以下に置く</li>
+</ul>
+
+<p>
+Windows上でサウンド形式を変換するソフト <b><a href="http://forest.watch.impress.co.jp/library/software/audacity/">Audacity</a></b> を配布フォルダに置いておきます。macOSの場合は App Storeから <b><a href="https://itunes.apple.com/jp/app/universal-audio-converter/id1062636069?mt=12">Universal Audio Converter</a></b> をダウンロードして使ってください
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c++">  
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12469;&#12454;&#12531;&#12489;&#12434;&#12501;&#12449;&#12452;&#12523;&#12363;&#12425;&#35501;&#12415;&#36796;&#12416;  </span>
+<span style="color: #ba2f59;">Media</span> <span style="color: #715ab1;">sound</span>(<span style="color: #2d9574;">"res/hoge.wav"</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20877;&#29983;</span>
+sound.play();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20572;&#27490;</span>
+sound.stop();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#19968;&#26178;&#20572;&#27490;(&#12371;&#12398;&#24460;&#20877;&#29983;&#12377;&#12427;&#12392;&#12289;&#32154;&#12365;&#12363;&#12425;&#12395;&#12394;&#12427;)</span>
+sound.pause();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#38899;&#37327;&#22793;&#26356;(0.0~1.0)</span>
+sound.gain(<span style="color: #1C00CF;">0.5</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#20877;&#29983;&#36895;&#24230;&#22793;&#26356;(0.0~)</span>
+sound.pitch(<span style="color: #1C00CF;">1.5</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12523;&#12540;&#12503; true&#12391;ON false&#12391;OFF</span>
+sound.looping(<span style="color: #1C00CF;">false</span>);
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0424ff4" class="outline-2">
+<h2 id="org0424ff4"><span class="section-number-2">10</span> ゲームパッド</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>USBで接続するタイプなら概ね扱えます</li>
+
+<li>ボタンの種類、アナログ入力の数はWindowsのデバイス設定から確認してください</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;&#25509;&#32154;&#25968;&#12434;&#35519;&#12409;&#12427;&#12290;0&#12394;&#12425;&#25509;&#32154;&#12394;&#12375;</span>
+<span style="color: #ba2f59;">int</span> <span style="color: #715ab1;">num</span> = env.numGamePad();
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12513;&#12452;&#12531;&#12523;&#12540;&#12503;</span>
+<span style="color: #AA0D91;">while</span> (env.isOpen()) {
+  env.begin();
+
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;0&#30058;&#12398;&#24773;&#22577;&#12434;&#12466;&#12483;&#12488;</span>
+  <span style="color: #ba2f59;">GamePad</span> <span style="color: #715ab1;">game_pad</span> = env.gamePad(<span style="color: #1C00CF;">0</span>);
+  
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;&#12508;&#12479;&#12531;&#25968;</span>
+  <span style="color: #ba2f59;">int</span> <span style="color: #715ab1;">button_num</span> = game_pad.buttons();
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;&#12450;&#12490;&#12525;&#12464;&#20837;&#21147;&#12398;&#36600;&#12398;&#25968;</span>
+  <span style="color: #ba2f59;">int</span> <span style="color: #715ab1;">axis_num</span> = game_pad.axes();
+  
+  <span style="color: #AA0D91;">if</span> (game_pad.isButtonPressing(<span style="color: #1C00CF;">0</span>)) {
+    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;0&#30058;&#12508;&#12479;&#12531;&#12364;&#25276;&#12373;&#12428;&#12390;&#12356;&#12427;</span>
+  }
+
+  <span style="color: #AA0D91;">if</span> (game_pad.isButtonPushed(<span style="color: #1C00CF;">1</span>)) {
+    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;1&#30058;&#12508;&#12479;&#12531;&#12364;&#25276;&#12373;&#12428;&#12383;&#30636;&#38291;</span>
+  }
+
+  <span style="color: #AA0D91;">if</span> (game_pad.isButtonReleased(<span style="color: #1C00CF;">2</span>)) {
+    <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;2&#30058;&#12508;&#12479;&#12531;&#12364;&#38626;&#12373;&#12428;&#12383;&#30636;&#38291;</span>
+  }
+
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;&#12450;&#12490;&#12525;&#12464;&#20837;&#21147;1&#30058;&#12398;&#29366;&#24907;</span>
+  <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12384;&#12356;&#12383;&#12356; -1.0&#12316;1.0 &#12398;&#31684;&#22258;&#12398;&#20516;</span>
+  <span style="color: #ba2f59;">float</span> <span style="color: #715ab1;">x_axis</span> = game_pad.axis(<span style="color: #1C00CF;">1</span>);
+
+  env.end();
+}
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12461;&#12540;&#12539;&#12510;&#12454;&#12473;&#12539;&#12466;&#12540;&#12512;&#12497;&#12483;&#12489;&#12398;&#20837;&#21147;&#24773;&#22577;&#12434;&#12463;&#12522;&#12450;</span>
+env.flushInput();
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7635cef" class="outline-2">
+<h2 id="org7635cef"><span class="section-number-2">11</span> 文字表示</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>TTF形式のフォントを使います</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-c++"><span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#12501;&#12457;&#12531;&#12488;&#12434;&#20351;&#12358;&#28310;&#20633;</span>
+<span style="color: #ba2f59;">Font</span> <span style="color: #715ab1;">font</span>(<span style="color: #2d9574;">"res/hoge.ttf"</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#26178;&#12398;&#12469;&#12452;&#12474;&#12434;&#27770;&#12417;&#12427;</span>
+font.size(<span style="color: #1C00CF;">60</span>);
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#25991;&#23383;&#21015;&#12434;&#34920;&#31034;</span>
+font.draw(u8<span style="color: #2d9574;">"&#12411;&#12370;"</span>,                   <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#12377;&#12427;&#25991;&#23383;&#21015; </span>
+          Vec2f(<span style="color: #1C00CF;">0</span>, <span style="color: #1C00CF;">0</span>),                <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#20301;&#32622;</span>
+          Color(<span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>, <span style="color: #1C00CF;">1</span>));            <span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#34920;&#31034;&#33394;</span>
+
+<span style="color: #2aa1ae;">// </span><span style="color: #2aa1ae;">&#30011;&#38754;&#12395;&#25991;&#23383;&#21015;&#12434;&#34920;&#31034;&#12377;&#12427;&#26178;&#12398;&#20104;&#24819;&#34920;&#31034;&#12469;&#12452;&#12474;&#12434;&#35336;&#31639;&#12377;&#12427;</span>
+<span style="color: #ba2f59;">Vec2f</span> <span style="color: #715ab1;">size</span> = font.drawSize(u8<span style="color: #2d9574;">"&#12411;&#12370;"</span>);          
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
