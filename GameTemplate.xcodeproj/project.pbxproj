@@ -334,6 +334,7 @@
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
+				PRODUCT_BUNDLE_IDENTIFIER = "ngs.${PRODUCT_NAME:rfc1034identifier}";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -347,6 +348,7 @@
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
+				PRODUCT_BUNDLE_IDENTIFIER = "ngs.${PRODUCT_NAME:rfc1034identifier}";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

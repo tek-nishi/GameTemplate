@@ -17,6 +17,6 @@ class Camera2D {
 public:
 	Camera2D();
   
-  std::pair<Affinef, Affinef> operator()(const Vec2f& view_size) const;
+  std::pair<Mat4, Mat4> operator()(const Vec2f& view_size) const;
   
 };

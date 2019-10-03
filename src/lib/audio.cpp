@@ -45,7 +45,7 @@ void Audio::lisnerPosition(const float x, const float y, const float z) {
 
 // pos →位置
 void Audio::lisnerPosition(const Vec3f& pos) {
-  lisnerPosition(pos.x(), pos.y(), pos.z());
+  lisnerPosition(pos.x, pos.y, pos.z);
 }
 
 // リスナーの向きを変更
@@ -61,8 +61,8 @@ void Audio::lisnerOrientation(const float at_x, const float at_y, const float at
 // at →向いている方向をあらわすベクトル
 // up →上方向をあらわすベクトル
 void Audio::lisnerOrientation(const Vec3f& at, const Vec3f& up) {
-  lisnerOrientation(at.x(), at.y(), at.z(),
-                    up.x(), up.y(), up.z());
+  lisnerOrientation(at.x, at.y, at.z,
+                    up.x, up.y, up.z);
 }
 
 // リスナーの移動速度を変更
@@ -74,7 +74,7 @@ void Audio::lisnerVerocity(const float x, const float y, const float z) {
 
 // vec →移動速度
 void Audio::lisnerVerocity(const Vec3f& vec) {
-  lisnerVerocity(vec.x(), vec.y(), vec.z());
+  lisnerVerocity(vec.x, vec.y, vec.z);
 }
 
 
@@ -195,7 +195,7 @@ void Source::position(const float x, const float y, const float z) const {
 
 // pos →位置
 void Source::position(const Vec3f& pos) const {
-  position(pos.x(), pos.y(), pos.z());
+  position(pos.x, pos.y, pos.z);
 }
 
 // ソースの移動速度を変更
@@ -207,7 +207,7 @@ void Source::verocity(const float x, const float y, const float z) const {
 
 // pos →移動速度
 void Source::verocity(const Vec3f& vec) const {
-  verocity(vec.x(), vec.y(), vec.z());
+  verocity(vec.x, vec.y, vec.z);
 }
 
 // 再生中??

@@ -251,14 +251,14 @@ void drawPoint(const float x, const float y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(x, y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawPoint(-origin.x(), -origin.y(),
+  drawPoint(-origin.x, -origin.y,
             radius,
             color);
 
@@ -317,15 +317,15 @@ void drawLine(const float start_x, const float start_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(start_x, start_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawLine(-origin.x(), -origin.y(),
-           (end_x - start_x) - origin.x(), (end_y - start_y) - origin.y(), 
+  drawLine(-origin.x, -origin.y,
+           (end_x - start_x) - origin.x, (end_y - start_y) - origin.y, 
            line_width,
            color);
 
@@ -389,16 +389,16 @@ void drawTriangle(const float x1, const float y1,
   
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(min_x, min_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawTriangle((x1 - min_x) - origin.x(), (y1 - min_y) - origin.y(),
-               (x2 - min_x) - origin.x(), (y2 - min_y) - origin.y(),
-               (x3 - min_x) - origin.x(), (y3 - min_y) - origin.y(),
+  drawTriangle((x1 - min_x) - origin.x, (y1 - min_y) - origin.y,
+               (x2 - min_x) - origin.x, (y2 - min_y) - origin.y,
+               (x3 - min_x) - origin.x, (y3 - min_y) - origin.y,
                line_width,
                color);
 
@@ -454,16 +454,16 @@ void drawFillTriangle(const float x1, const float y1,
   
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(min_x, min_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawFillTriangle((x1 - min_x) - origin.x(), (y1 - min_y) - origin.y(),
-                   (x2 - min_x) - origin.x(), (y2 - min_y) - origin.y(),
-                   (x3 - min_x) - origin.x(), (y3 - min_y) - origin.y(),
+  drawFillTriangle((x1 - min_x) - origin.x, (y1 - min_y) - origin.y,
+                   (x2 - min_x) - origin.x, (y2 - min_y) - origin.y,
+                   (x3 - min_x) - origin.x, (y3 - min_y) - origin.y,
                    color);
 
   // 行列を元に戻す
@@ -528,14 +528,14 @@ void drawCircle(const float center_x, const float center_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(center_x, center_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawCircle(-origin.x(), -origin.y(),
+  drawCircle(-origin.x, -origin.y,
              radius_x, radius_y,
              division,
              line_width,
@@ -599,14 +599,14 @@ void drawFillCircle(const float center_x, const float center_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(center_x, center_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawFillCircle(-origin.x(), -origin.y(),
+  drawFillCircle(-origin.x, -origin.y,
                  radius_x, radius_y,
                  division,
                  color);
@@ -677,14 +677,14 @@ void drawArc(const float center_x, const float center_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(center_x, center_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawArc(-origin.x(), -origin.y(),
+  drawArc(-origin.x, -origin.y,
           radius_x, radius_y,
           start_rad, end_rad,
           division,
@@ -751,14 +751,14 @@ void drawFillArc(const float center_x, const float center_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(center_x, center_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawFillArc(-origin.x(), -origin.y(),
+  drawFillArc(-origin.x, -origin.y,
               radius_x, radius_y,
               start_rad, end_rad,
               division,
@@ -824,14 +824,14 @@ void drawBox(const float start_x, const float start_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(start_x, start_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawBox(-origin.x(), -origin.y(),
+  drawBox(-origin.x, -origin.y,
           width, height,
           line_width,
           color);
@@ -889,14 +889,14 @@ void drawFillBox(const float start_x, const float start_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(start_x, start_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawFillBox(-origin.x(), -origin.y(),
+  drawFillBox(-origin.x, -origin.y,
               width, height,
               color);
 
@@ -963,17 +963,17 @@ void drawQuad(const float x1, const float y1,
   
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(min_x, min_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawQuad((x1 - min_x) - origin.x(), (y1 - min_y) - origin.y(),
-           (x2 - min_x) - origin.x(), (y2 - min_y) - origin.y(),
-           (x3 - min_x) - origin.x(), (y3 - min_y) - origin.y(),
-           (x4 - min_x) - origin.x(), (y4 - min_y) - origin.y(),
+  drawQuad((x1 - min_x) - origin.x, (y1 - min_y) - origin.y,
+           (x2 - min_x) - origin.x, (y2 - min_y) - origin.y,
+           (x3 - min_x) - origin.x, (y3 - min_y) - origin.y,
+           (x4 - min_x) - origin.x, (y4 - min_y) - origin.y,
            line_width,
            color);
 
@@ -1035,17 +1035,17 @@ void drawFillQuad(const float x1, const float y1,
   
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(min_x, min_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawFillQuad((x1 - min_x) - origin.x(), (y1 - min_y) - origin.y(),
-               (x2 - min_x) - origin.x(), (y2 - min_y) - origin.y(),
-               (x3 - min_x) - origin.x(), (y3 - min_y) - origin.y(),
-               (x4 - min_x) - origin.x(), (y4 - min_y) - origin.y(),
+  drawFillQuad((x1 - min_x) - origin.x, (y1 - min_y) - origin.y,
+               (x2 - min_x) - origin.x, (y2 - min_y) - origin.y,
+               (x3 - min_x) - origin.x, (y3 - min_y) - origin.y,
+               (x4 - min_x) - origin.x, (y4 - min_y) - origin.y,
                color);
 
   // 行列を元に戻す
@@ -1129,14 +1129,14 @@ void drawTextureBox(const float start_x, const float start_y,
   // 回転、拡大縮小の行列を生成
   auto matrix = transformMatrix2D(angle_rad,
                                   Vec3f(start_x, start_y, 0.0f),
-                                  Vec3f(scaling.x(), scaling.y(), 1.0f));
+                                  Vec3f(scaling.x, scaling.y, 1.0f));
 
   // 行列をOpenGLに設定
   glPushMatrix();
-  glMultMatrixf(matrix.data());
+  glMultMatrixf(glm::value_ptr(matrix));
 
   // 描画
-  drawTextureBox(-origin.x(), -origin.y(),
+  drawTextureBox(-origin.x, -origin.y,
                  width, height,
                  start_tx, start_ty,
                  texture_width, texture_height,

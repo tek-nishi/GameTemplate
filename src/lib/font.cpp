@@ -119,5 +119,5 @@ Vec2f Font::drawSize(const std::string& text) {
 // color 表示色
 void Font::draw(const std::string& text, const Vec2f& pos, const Color& color) {
   fonsSetColor(context_, color.rgba());
-  fonsDrawText(context_, pos.x(), pos.y(), text.c_str(), nullptr);
+  fonsDrawText(context_, pos.x, pos.y, text.c_str(), nullptr);
 }

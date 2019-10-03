@@ -6,15 +6,14 @@
 //
 
 #include "defines.hpp"
-#include <Eigen/Geometry>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
-typedef Eigen::Matrix<GLint, 2, 1>	 Vec2i;
-typedef Eigen::Matrix<GLfloat, 2, 1> Vec2f;
-typedef Eigen::Matrix<GLfloat, 3, 1> Vec3f;
-typedef Eigen::Matrix<GLfloat, 4, 1> Vec4f;
-
-typedef Eigen::Quaternion<GLfloat> Quatf;
+using Vec2i = glm::ivec2;
+using Vec2f = glm::vec2;
+using Vec3f = glm::vec3;
+using Vec4f = glm::vec4;
 
 
 // 向きがランダムで長さが１のベクトルを作成

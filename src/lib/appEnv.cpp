@@ -79,8 +79,8 @@ const GLFWwindow* const AppEnv::getGlfwHandle() const {return window_(); }
 
 // アプリ更新処理開始
 void AppEnv::begin() {
-  glViewport(viewport_ofs_.x(), viewport_ofs_.y(),
-             viewport_size_.x(), viewport_size_.y());
+  glViewport(viewport_ofs_.x, viewport_ofs_.y,
+             viewport_size_.x, viewport_size_.y);
   
   // ウインドウの内容を指定色で消去
   glClearColor(bg_color_.r(), bg_color_.g(), bg_color_.b(), bg_color_.a());
@@ -109,10 +109,10 @@ void AppEnv::begin() {
   auto matrix = camera_2d_(current_window_size_);
 
   glMatrixMode(GL_PROJECTION);
-  glLoadMatrixf(matrix.first.data());
+  glLoadMatrixf(glm::value_ptr(matrix.first));
 
   glMatrixMode(GL_MODELVIEW);
-  glLoadMatrixf(matrix.second.data());
+  glLoadMatrixf(glm::value_ptr(matrix.second));
 
   updateGamePad(gamepads_);
 }
@@ -147,7 +147,7 @@ const Vec2f& AppEnv::viewSize() const { return current_window_size_; }
 // ウインドウの位置を変更
 // pos 新しい位置
 void AppEnv::windowPosition(const Vec2i& pos) {
-  glfwSetWindowPos(window_(), pos.x(), pos.y());
+  glfwSetWindowPos(window_(), pos.x, pos.y);
 }
 
 // ウインドウの位置を取得
@@ -200,12 +200,12 @@ const Vec2f& AppEnv::mousePosition() const { return mouse_current_pos_; }
 void AppEnv::mousePosition(const Vec2f& pos) {
   mouse_current_pos_ = pos;
 
-  Vec2f window_pos = windowPosition(Vec2f(pos.x(), -pos.y()),
-                                    current_window_size_, Vec2f(viewport_size_.x(), viewport_size_.y()));
+  Vec2f window_pos = windowPosition(Vec2f(pos.x, -pos.y),
+                                    current_window_size_, Vec2f(viewport_size_.x, viewport_size_.y));
 
-  Vec2f mouse_pos = Vec2f(window_pos.x() + viewport_ofs_.x(), window_pos.y() + viewport_ofs_.y());
+  Vec2f mouse_pos = Vec2f(window_pos.x + viewport_ofs_.x, window_pos.y + viewport_ofs_.y);
   
-  glfwSetCursorPos(window_(), mouse_pos.x(), mouse_pos.y());
+  glfwSetCursorPos(window_(), mouse_pos.x, mouse_pos.y);
 }
 
 // マウスカーソルのON/OFF
@@ -286,8 +286,8 @@ void AppEnv::changeWindowSize(GLFWwindow* window, const int width, const int hei
   }
   else {
     // Windowのサイズと描画サイズは一致
-    obj->current_window_size_ << width, height;
-    obj->viewport_size_ << width, height;
+    obj->current_window_size_ = Vec2f(width, height);
+    obj->viewport_size_       = Vec2f(width, height);
   }
 }
 
@@ -312,11 +312,11 @@ void AppEnv::mouseButtonCallback(GLFWwindow* window, const int button, const int
 void AppEnv::mouseMoveCallback(GLFWwindow* window, const double x_pos, const double y_pos) {
   auto* const obj = static_cast<AppEnv*>(glfwGetWindowUserPointer(window));
     
-  Vec2f pos = screenPosition(Vec2f(x_pos - obj->viewport_ofs_.x(), y_pos - obj->viewport_ofs_.y()),
+  Vec2f pos = screenPosition(Vec2f(x_pos - obj->viewport_ofs_.x, y_pos - obj->viewport_ofs_.y),
                              obj->current_window_size_,
-                             Vec2f(obj->viewport_size_.x(), obj->viewport_size_.y()));
+                             Vec2f(obj->viewport_size_.x, obj->viewport_size_.y));
   // TIPS:Yは上下が逆
-  obj->mouse_current_pos_ << pos.x(), -pos.y();
+  obj->mouse_current_pos_ = Vec2f(pos.x, -pos.y);
 }
 
 void AppEnv::focusCallback(GLFWwindow* window, int focus) {
@@ -328,17 +328,17 @@ void AppEnv::focusCallback(GLFWwindow* window, int focus) {
 // 画面中央が(0, 0)の座標を計算
 Vec2f AppEnv::screenPosition(const Vec2f& pos, const Vec2f& window, const Vec2f& viewport) {
   // ウインドウサイズと描画サイズの違いも考慮する
-  Vec2f screen_rate(window.array() / viewport.array());
+  Vec2f screen_rate(window / viewport);
   Vec2f view_pos(pos - viewport / 2.0f);
 
-  return Vec2f(view_pos.array() * screen_rate.array());
+  return Vec2f(view_pos * screen_rate);
 }
 
 // 画面中央が(0, 0)の座標→左上が(0, 0)の座標
 Vec2f AppEnv::windowPosition(const Vec2f& pos, const Vec2f& window, const Vec2f& viewport) {
-  Vec2f screen_rate = window.array() / viewport.array();
+  Vec2f screen_rate = window / viewport;
   
-  return Vec2f(pos.array() / screen_rate.array()) + viewport / 2.0f;
+  return Vec2f(pos / screen_rate) + viewport / 2.0f;
 }
 
 // 入力バッファを切り替える
@@ -364,8 +364,8 @@ bool AppEnv::isFullscreen(const Screen type) {
 // 動的Viewport(アスペクト比固定)
 void AppEnv::dynamicViewport(const int width, const int height) {
   // 描画サイズは固定(アスペクト比固定)
-  float view_width  = window_size_.x();
-  float view_height = window_size_.y();
+  float view_width  = window_size_.x;
+  float view_height = window_size_.y;
 
   // アスペクト比から縦に揃えるか横に揃えるか決める
   float view_aspect   = view_height / view_width;
@@ -375,16 +375,16 @@ void AppEnv::dynamicViewport(const int width, const int height) {
     int window_height = width * view_aspect;
 
     // 上下に余白が入る
-    viewport_ofs_  << 0, (height - window_height) / 2;
-    viewport_size_ << window_width, window_height;
+    viewport_ofs_  = Vec2i(0, (height - window_height) / 2);
+    viewport_size_ = Vec2i(window_width, window_height);
   }
   else {
     int window_width  = height / view_aspect;
     int window_height = height;
 
     // 左右に余白が入る
-    viewport_ofs_  << (width - window_width) / 2, 0;
-    viewport_size_ << window_width, window_height;
+    viewport_ofs_  = Vec2i((width - window_width) / 2, 0);
+    viewport_size_ = Vec2i(window_width, window_height);
   }
 }
   
