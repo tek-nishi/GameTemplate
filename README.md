@@ -17,7 +17,7 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 + OpenGL 1.1
 + GLFW 3.3
 + OpenAL
-+ Eigen 3.3.3
++ glm 0.9.9.5
 + stb_image 2.3.4
 + fontstash
 + stb_truetype 1.15
