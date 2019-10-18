@@ -4,6 +4,7 @@
 
 #include "graph.hpp"
 #include <vector>
+#include <algorithm>
 #include "matrix.hpp"
 
 
