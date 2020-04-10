@@ -328,12 +328,12 @@
 		47D9C2AC187517DD003D46FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "ngs.${PRODUCT_NAME:rfc1034identifier}";
 				WRAPPER_EXTENSION = app;
 			};
@@ -342,12 +342,12 @@
 		47D9C2AD187517DD003D46FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSX/GameTemplate-Prefix.pch";
 				INFOPLIST_FILE = "OSX/GameTemplate-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/OSX/lib";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "ngs.${PRODUCT_NAME:rfc1034identifier}";
 				WRAPPER_EXTENSION = app;
 			};
