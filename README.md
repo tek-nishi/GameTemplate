@@ -15,12 +15,12 @@ C++でゲームを作るためのごく簡単なフレームワークです。C+
 
 ## 利用した外部ライブラリ
 + OpenGL 1.1
-+ GLFW 3.3
++ GLFW 3.3.2
 + OpenAL
-+ glm 0.9.9.5
-+ stb_image 2.3.4
++ glm 0.9.9.7
++ stb_image 2.25
++ stb_truetype 1.24
 + fontstash
-+ stb_truetype 1.15
 
 ## License
 License All source code files are licensed under the MPLv2.0 license
