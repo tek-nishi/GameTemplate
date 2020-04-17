@@ -8,6 +8,7 @@
 #include "defines.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/exterior_product.hpp>    // vec2の外積
 
 
 using Vec2i = glm::ivec2;
